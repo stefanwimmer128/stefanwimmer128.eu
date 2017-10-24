@@ -1,0 +1,61 @@
+{
+  "name": "stefanwimmer128.eu",
+  "scripts": {
+    "gulp": "NODE_ENV=\"${NODE_ENV:-development}\" babel-node --presets=env \"$(which gulp)\"",
+    "serve": "firebase serve --only functions,hosting",
+    "webpack-dev-server": "NODE_ENV=\"development\" babel-node --presets=env \"$(which webpack-dev-server)\" --config webpack.config/public.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanwimmer128/stefanwimmer128.eu.git"
+  },
+  "author": "Stefan Wimmer <info@stefanwimmer128.eu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefanwimmer128/stefanwimmer128.eu/issues"
+  },
+  "homepage": "https://github.com/stefanwimmer128/stefanwimmer128.eu#readme",
+  "devDependencies": {
+    "apollo-client": "^1.9.3",
+    "babel-core": "^7.0.0-beta.3",
+    "babel-loader": "^7.1.2",
+    "babel-node": "^7.0.0-beta.3",
+    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
+    "babel-polyfill": "^7.0.0-beta.3",
+    "babel-preset-env": "^7.0.0-beta.3",
+    "bootstrap": "^4.0.0-beta.2",
+    "css-loader": "^0.28.7",
+    "del": "^3.0.0",
+    "element-ui": "^1.4.8",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "firebase-tools": "^3.13.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-cli": "^1.4.0",
+    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-template": "^5.6.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.1",
+    "node-sass": "^4.5.3",
+    "popper.js": "^1.12.6",
+    "pug": "^2.0.0-rc.4",
+    "raw-loader": "^0.5.1",
+    "remarkable": "^1.7.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "vue": "^2.5.2",
+    "vue-apollo": "^2.1.0-rc.8",
+    "vue-loader": "^13.3.0",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.2",
+    "vuex": "^3.0.0",
+    "vuex-router-sync": "^5.0.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
+    "webpack-promise": "^1.2.0"
+  }
+}

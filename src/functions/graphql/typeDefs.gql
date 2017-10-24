@@ -1,0 +1,21 @@
+type Blog {
+    length: Int!
+    entries(from: Int!, to: Int!): [BlogEntry]
+}
+
+type BlogEntry {
+    date: String!
+    message: String!
+    title: String!
+}
+
+type Menu {
+    href: String
+    title: String!
+    to: String
+}
+
+type Query {
+    blog: Blog
+    menu: [Menu]
+}
