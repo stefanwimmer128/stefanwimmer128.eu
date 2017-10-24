@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/stefanwimmer128/stefanwimmer128.eu/issues"
   },
-  "homepage": "https://github.com/stefanwimmer128/stefanwimmer128.eu#readme",
+  "homepage": "https://stefanwimmer128.eu/",
   "devDependencies": {
     "apollo-client": "^1.9.3",
     "babel-core": "^7.0.0-beta.3",
