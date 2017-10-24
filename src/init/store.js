@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     plugins: process.env.NODE_ENV === "development" ? [
-        createLogger(),
+        createLogger({
+            collapsed: false,
+        }),
     ] : [],
 });

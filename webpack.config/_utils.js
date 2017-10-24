@@ -19,12 +19,12 @@ export const __babelLoader = {
     },
 };
 
-export const fileLoader = path =>
+export const fileLoader = outputPath =>
     ({
         loader: "file-loader",
         options: {
             name: "[name].[ext]?[hash]",
-            path,
+            outputPath,
         },
     });
 

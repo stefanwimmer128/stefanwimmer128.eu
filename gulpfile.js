@@ -23,7 +23,7 @@ gulp.task("functions", gulp.series("functions:clean", "functions:build"));
 
 gulp.task("public:clean", () =>
     del([
-        "public/**",
+        "public/*",
     ]),
 );
 

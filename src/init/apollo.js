@@ -14,4 +14,7 @@ export const apolloProvider = new VueApollo({
             uri: "/graphql",
         }),
     }),
+    defaultOptions: {
+        $loadingKey: "pending",
+    },
 });

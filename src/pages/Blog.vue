@@ -7,7 +7,6 @@
     export default {
         apollo: {
             entries: {
-                loadingKey: "pending",
                 query: gql`query($from: Int!, $to: Int!) {
                     blog {
                         entries(from: $from, to: $to) {
@@ -37,7 +36,6 @@
                 },
             },
             length: {
-                loadingKey: "pending",
                 query: gql`query {
                     blog {
                         length
@@ -82,8 +80,8 @@
             el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
             div.card(:key="i" v-for="(entry, i) in entries")
                 div.card-header
-                    b {{entry.title}}
-                    |  ({{entry.date}})
+                    h4.card-title {{entry.title}}
+                    h6.card-subtitle.text-muted ({{entry.date}})
                 markdown.card-body.card-text(:markdown="entry.message")
             el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
 </template>
