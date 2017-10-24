@@ -3,3 +3,5 @@
 /public/
 
 /functions/functions.js*
+
+*.log
