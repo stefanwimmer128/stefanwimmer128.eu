@@ -106,6 +106,12 @@ export default {
             appMountId: "mount",
             baseHref: "/",
             inject: false,
+            meta: [
+                {
+                    content: "width=device-width, initial-scale=1, shrink-to-fit=no",
+                    name: "viewport",
+                },
+            ],
             template: HtmlWebpackTemplate,
             title: "stefanwimmer128",
         }),
