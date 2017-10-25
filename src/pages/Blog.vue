@@ -74,14 +74,13 @@
 <template lang="pug">
     div
         h1 Blog
-        div.progress(v-if="pending > 0")
-            div.progress-bar.progress-bar-animated.progress-bar-striped.w-100 Loading...
-        template(v-else)
-            el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
-            div.card(:key="i" v-for="(entry, i) in entries")
-                div.card-header
-                    h4.card-title {{entry.title}}
-                    h6.card-subtitle.text-muted ({{entry.date}})
-                markdown.card-body.card-text(:markdown="entry.message")
-            el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
+        div(element-loading-text="Loading..." v-loading="pending > 0")
+            template(v-if="pending === 0")
+                el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
+                div.card(:key="i" v-for="(entry, i) in entries")
+                    div.card-header
+                        h4.card-title {{entry.title}}
+                        h6.card-subtitle.text-muted ({{entry.date}})
+                    markdown.card-body.card-text(:markdown="entry.message")
+                el-pagination(layout="total, sizes, prev, pager, next, jumper" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
 </template>
