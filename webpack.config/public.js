@@ -103,7 +103,7 @@ export default {
         ]),
         new FriendlyErrorsWebpackPlugin(),
         new HtmlWebpackPlugin({
-            appMountId: "mount",
+            appMountId: "app",
             baseHref: "/",
             inject: false,
             meta: [

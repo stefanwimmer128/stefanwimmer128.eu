@@ -27,12 +27,12 @@
 </script>
 
 <template lang="pug">
-    div#app
-        div.bg-dark.navbar.navbar-dark.navbar-expand-md.sticky-top#menu
+    div
+        div.bg-dark.navbar.navbar-dark.navbar-expand-md.sticky-top
             router-link.navbar-brand(to="/") stefanwimmer128
-            button.navbar-toggler(data-target="#menu-nav" data-toggle="collapse")
+            button.navbar-toggler(data-target="#navbar" data-toggle="collapse")
                 span.navbar-toggler-icon
-            div.collapse.navbar-collapse#menu-nav
+            div.collapse.navbar-collapse#navbar
                 div.navbar-nav
                     template(v-for="(entry, i) in menu")
                         router-link.nav-item.nav-link(active-class="active" :key="i" :to="entry.to" v-if="entry.to !== null") {{entry.title}}
