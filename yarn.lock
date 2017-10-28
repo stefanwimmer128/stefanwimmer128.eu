@@ -2273,9 +2273,9 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.24:
   version "1.3.27"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
-element-ui@^2.0.0-beta.1:
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.0.0-beta.1.tgz#354096bc332871f9892d849d3fee69a96bc1c0b0"
+element-ui@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.0.1.tgz#800a74a8ecf2843576fd6786b3ece07c2484b61a"
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -2613,9 +2613,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.1.tgz#605a8893faca1dd49bb0d2ca87493f33fd43d102"
+extract-text-webpack-plugin@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
   dependencies:
     async "^2.4.1"
     loader-utils "^1.1.0"
@@ -3510,9 +3510,9 @@ html-webpack-plugin@^2.30.1:
     pretty-error "^2.0.2"
     toposort "^1.0.0"
 
-html-webpack-template@^5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-template/-/html-webpack-template-5.6.0.tgz#6cdb96b680ebd2a633c869b7a6ab413aa2a91218"
+html-webpack-template@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/html-webpack-template/-/html-webpack-template-5.6.2.tgz#0980df2a25e36cf8a85d7495e23a0e002974b6a2"
 
 htmlparser2@~3.3.0:
   version "3.3.0"
