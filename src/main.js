@@ -13,21 +13,27 @@ Vue.use(ElementUI, {
     locale,
 });
 
-import * as apollo from "./init/apollo";
-import * as router from "./init/router";
-import * as store from "./init/store";
+import {
+    apolloProvider,
+} from "./init/apollo";
+import {
+    router,
+} from "./init/router";
+import {
+    store,
+} from "./init/store";
 
-sync(store.store, router.router);
+sync(store, router);
 
 import app from "./components/app";
 
 export default new Vue({
-    ...apollo,
-    ...router,
+    apolloProvider,
+    router,
     components: {
         app,
     },
     el: "#app",
-    ...store,
+    store,
     template: "<app />",
 });

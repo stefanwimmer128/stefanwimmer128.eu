@@ -4,6 +4,8 @@
         relative,
     } from "path";
     
+    import devPanel from "./dev-panel.vue";
+    
     export default {
         apollo: {
             menu: {
@@ -23,11 +25,14 @@
                     ),
             },
         },
+        components: {
+            devPanel,
+        },
     };
 </script>
 
 <template lang="pug">
-    div
+    div#app
         div.bg-dark.navbar.navbar-dark.navbar-expand-md.sticky-top
             router-link.navbar-brand(to="/") stefanwimmer128
             button.navbar-toggler(data-target="#navbar" data-toggle="collapse")
@@ -37,5 +42,8 @@
                     template(v-for="(entry, i) in menu")
                         router-link.nav-item.nav-link(active-class="active" :key="i" :to="entry.to" v-if="entry.to !== null") {{entry.title}}
                         a.nav-item.nav-link(:href="entry.href" :key="i" target="_blank" v-if="entry.href !== null") {{entry.title}}
-        router-view.pt-2.px-2#content
+        div.container-fluid
+            div.row
+                router-view.col.pt-2.px-2
+                dev-panel.col-4(v-if="this.$store.state.devPanel")
 </template>
