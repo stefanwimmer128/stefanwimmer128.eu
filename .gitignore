@@ -1,8 +1,9 @@
 **/node_modules/
 
-/functions/functions.js*
 /public/*
 
-*.log
+/functions/index.js*
 
 !/public/favicon.ico
+
+*.log

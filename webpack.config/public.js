@@ -21,10 +21,16 @@ export default {
     devServer: {
         historyApiFallback: true,
         hot: true,
-        proxy: {
-            "/graphql": "http://127.0.0.1:5000",
-            "/graphiql": "http://127.0.0.1:5000",
-        },
+        proxy: [
+            {
+                changeOrigin: true,
+                context: [
+                    "/graphiql",
+                    "/graphql",
+                ],
+                target: process.env.BACKEND_URL || "http://127.0.0.1:5000",
+            },
+        ],
     },
     devtool: "source-map",
     entry: [
@@ -41,6 +47,10 @@ export default {
                         sourceMapLoader("css-loader"),
                     ],
                 }),
+            },
+            {
+                test: /\.gql$/,
+                use: "graphql-tag/loader",
             },
             {
                 exclude: /node_modules/,

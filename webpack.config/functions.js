@@ -32,7 +32,7 @@ export default {
         ],
     },
     output: {
-        filename: "functions.js",
+        filename: "index.js",
         libraryTarget: "commonjs",
         path: path("functions/"),
     },

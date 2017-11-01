@@ -9,7 +9,7 @@ import webpackConfig_public from "./webpack.config/public";
 
 gulp.task("functions:clean", () =>
     del([
-        "functions/functions.js*",
+        "functions/index.js*"
     ]),
 );
 
@@ -24,6 +24,7 @@ gulp.task("functions", gulp.series("functions:clean", "functions:build"));
 gulp.task("public:clean", () =>
     del([
         "public/*",
+        "!public/favicon.ico",
     ]),
 );
 

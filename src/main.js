@@ -28,5 +28,6 @@ export default new Vue({
         app,
     },
     el: "#app",
+    ...store,
     template: "<app />",
 });
