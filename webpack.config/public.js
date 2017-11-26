@@ -19,6 +19,7 @@ import {
 
 export default {
     devServer: {
+        contentBase: path("public/"),
         historyApiFallback: true,
         hot: true,
         proxy: [
