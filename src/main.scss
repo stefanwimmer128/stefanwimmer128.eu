@@ -1,9 +1,11 @@
+$font-family-base: Arial, sans-serif;
+
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~element-ui/lib/theme-chalk/index.css";
 
 body
 {
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: $font-family-base;
     font-size: $font-size-base;
     margin: 0;
 }
