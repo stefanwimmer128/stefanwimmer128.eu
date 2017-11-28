@@ -34,10 +34,7 @@ export default {
         ],
     },
     devtool: "source-map",
-    entry: [
-        "babel-polyfill",
-        "./src/main",
-    ],
+    entry: "./src",
     module: {
         rules: [
             {

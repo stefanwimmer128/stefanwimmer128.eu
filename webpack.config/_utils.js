@@ -6,11 +6,11 @@ export const __babelLoader = {
     loader: "babel-loader",
     options: {
         plugins: [
-            "transform-object-rest-spread",
+            "@babel/plugin-proposal-object-rest-spread",
         ],
         presets: [
             [
-                "env",
+                "@babel/preset-env",
                 {
                     modules: false,
                 },

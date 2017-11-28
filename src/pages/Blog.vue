@@ -7,6 +7,7 @@
     export default {
         apollo: {
             entries: {
+                fetchPolicy: "network-only",
                 query: gql`query($from: Int!, $to: Int!) {
                     blog {
                         entries(from: $from, to: $to) {
@@ -65,7 +66,7 @@
             },
             refresh()
             {
-                this.$apollo.queries.length.refetch();
+                this.$apollo.queries.length.refresh();
             },
             sizeChange(size)
             {

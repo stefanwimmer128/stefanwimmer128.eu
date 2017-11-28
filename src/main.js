@@ -5,10 +5,6 @@ import {
     sync,
 } from "vuex-router-sync";
 
-import "bootstrap";
-
-import "./main.scss";
-
 Vue.use(ElementUI, {
     locale,
 });
