@@ -12,8 +12,7 @@ export default makeExecutableSchema({
     typeDefs,
     resolvers: {
         Blog: {
-            entries: (obj, args) =>
-            {
+            entries: (obj, args) => {
                 if (args.from > args.to)
                     throw new TypeError("`from` must be less then or equal to `to`");
                 if (args.to >= obj.length)

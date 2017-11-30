@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
 $--font-path: "~element-theme-chalk/src/fonts";
-$font-family-base: Arial, sans-serif;
+$font-family-base: Fira Sans, sans-serif;
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~element-theme-chalk/src/index.scss";

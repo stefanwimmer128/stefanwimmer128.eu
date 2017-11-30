@@ -17,8 +17,7 @@
                         }
                     }
                 }`,
-                skip()
-                {
+                skip() {
                     return this.length <= 0;
                 },
                 update: data =>
@@ -28,8 +27,7 @@
                             date: moment(entry.date).format("llll"),
                         }),
                     ),
-                variables()
-                {
+                variables() {
                     return {
                         from: (this.page.index - 1) * this.page.size,
                         to: Math.min(this.page.index * this.page.size - 1, this.length - 1),
@@ -60,16 +58,13 @@
                 pending: 0,
             }),
         methods: {
-            currentChange(index)
-            {
+            currentChange(index) {
                 this.page.index = index;
             },
-            refresh()
-            {
+            refresh() {
                 this.$apollo.queries.length.refresh();
             },
-            sizeChange(size)
-            {
+            sizeChange(size) {
                 this.page.size = size;
             },
         },

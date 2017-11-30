@@ -2,8 +2,8 @@ import del from "del";
 import gulp from "gulp";
 import webpack from "webpack-promise";
 
-import webpackConfig_functions from "./webpack.config/functions";
-import webpackConfig_public from "./webpack.config/public";
+import __functions from "./webpack.config/functions";
+import __public from "./webpack.config/public";
 
 /* functions */
 
@@ -14,7 +14,7 @@ gulp.task("functions:clean", () =>
 );
 
 gulp.task("functions:build", () =>
-    webpack(webpackConfig_functions),
+    webpack(__functions),
 );
 
 gulp.task("functions", gulp.series("functions:clean", "functions:build"));
@@ -29,7 +29,7 @@ gulp.task("public:clean", () =>
 );
 
 gulp.task("public:build", () =>
-    webpack(webpackConfig_public),
+    webpack(__public),
 );
 
 gulp.task("public", gulp.series("public:clean", "public:build"));

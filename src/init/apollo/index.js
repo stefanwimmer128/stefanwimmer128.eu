@@ -1,18 +1,20 @@
 import {
+    InMemoryCache,
+} from "apollo-cache-inmemory";
+import {
     ApolloClient,
-    createBatchingNetworkInterface
 } from "apollo-client";
+import {
+    HttpLink,
+} from "apollo-link-http";
 import Vue from "vue";
 import VueApollo from "vue-apollo";
 
 Vue.use(VueApollo);
 
 export const apollo = new ApolloClient({
-    connectToDevTools: process.env.NODE_ENV === "development",
-    networkInterface: createBatchingNetworkInterface({
-        opts: {
-            credentials: "same-origin",
-        },
+    cache: new InMemoryCache(),
+    link: new HttpLink({
         uri: "/graphql",
     }),
 });

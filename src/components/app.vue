@@ -4,8 +4,6 @@
         relative,
     } from "path";
     
-    import devPanel from "./dev-panel.vue";
-    
     export default {
         apollo: {
             menu: {
@@ -25,9 +23,6 @@
                     ),
             },
         },
-        components: {
-            devPanel,
-        },
     };
 </script>
 
@@ -42,8 +37,5 @@
                     template(v-for="(entry, i) in menu")
                         router-link.nav-item.nav-link(active-class="active" :key="i" :to="entry.to" v-if="entry.to !== null") {{entry.title}}
                         a.nav-item.nav-link(:href="entry.href" :key="i" target="_blank" v-if="entry.href !== null") {{entry.title}}
-        div.container-fluid
-            div.row
-                router-view.col.pt-2.px-2
-                dev-panel.col-4(v-if="this.$store.state.devPanel")
+        router-view.px-2.py-2
 </template>

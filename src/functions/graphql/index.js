@@ -5,7 +5,6 @@ import {
 import {
     json,
 } from "body-parser";
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import {
@@ -20,15 +19,8 @@ export const graphiql = https.onRequest(express().use(graphiqlExpress({
 
 export const graphql = https.onRequest(express().use(
     cors(),
-    cookieParser(),
     json(),
-    graphqlExpress((req, res) =>
-        ({
-            context: {
-                req,
-                res,
-            },
-            schema,
-        }),
-    ),
+    graphqlExpress({
+        schema,
+    }),
 ));

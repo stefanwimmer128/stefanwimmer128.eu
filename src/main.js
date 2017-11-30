@@ -1,35 +1,20 @@
 import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import Vue from "vue";
-import {
-    sync,
-} from "vuex-router-sync";
+
+import * as init from "./init";
+
+import app from "./components/app";
 
 Vue.use(ElementUI, {
     locale,
 });
 
-import {
-    apolloProvider,
-} from "./init/apollo";
-import {
-    router,
-} from "./init/router";
-import {
-    store,
-} from "./init/store";
-
-sync(store, router);
-
-import app from "./components/app";
-
 export default new Vue({
-    apolloProvider,
-    router,
+    ...init,
     components: {
         app,
     },
     el: "#app",
-    store,
     template: "<app />",
 });

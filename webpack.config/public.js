@@ -38,7 +38,7 @@ export default {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.css(\?\S*)?$/,
                 use: ExtractTextWebpackPlugin.extract({
                     fallback: sourceMapLoader("style-loader"),
                     use: [
@@ -47,20 +47,20 @@ export default {
                 }),
             },
             {
-                test: /\.gql$/,
+                test: /\.gql(\?\S*)?$/,
                 use: "graphql-tag/loader",
             },
             {
                 exclude: /node_modules/,
-                test: /\.js$/,
+                test: /\.js(\?\S*)?$/,
                 use: __babelLoader,
             },
             {
-                test: /\.md$/,
+                test: /\.md(\?\S*)?$/,
                 use: "raw-loader",
             },
             {
-                test: /\.scss$/,
+                test: /\.scss(\?\S*)?$/,
                 use: ExtractTextWebpackPlugin.extract({
                     fallback: sourceMapLoader("style-loader"),
                     use: [
@@ -70,7 +70,7 @@ export default {
                 }),
             },
             {
-                test: /\.vue$/,
+                test: /\.vue(\?\S*)?$/,
                 use: {
                     loader: "vue-loader",
                     options: {
@@ -88,12 +88,8 @@ export default {
                 },
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                test: /\.(ttf|woff)(\?\S*)?$/,
                 use: fileLoader("fonts/"),
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
-                use: fileLoader("images/"),
             },
         ],
     },
@@ -101,7 +97,7 @@ export default {
         filename: "main.js?[hash]",
         path: path("public/"),
     }, process.env.NODE_ENV === "development" ? {
-        library: "app",
+        library: "$",
         libraryExport: "default",
         libraryTarget: "window",
     } : {}),

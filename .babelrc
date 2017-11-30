@@ -1,0 +1,9 @@
+{
+    only: [
+        "webpack.config/*.js",
+        "gulpfile.js",
+    ],
+    presets: [
+        "@babel/preset-env",
+    ],
+}
