@@ -19,16 +19,6 @@ export const __babelLoader = {
     },
 };
 
-export const __postCssLoader = {
-    loader: "postcss-loader",
-    options: {
-        plugins: [
-            autoprefixer(),
-        ],
-        sourceMap: true,
-    },
-};
-
 export const fileLoader = outputPath =>
     ({
         loader: "file-loader",

@@ -15,7 +15,6 @@ import {
     fileLoader,
     path,
     sourceMapLoader,
-    __postCssLoader,
 } from "./_utils";
 
 export default {
@@ -39,10 +38,6 @@ export default {
     module: {
         rules: [
             {
-                test: /\.gql(\?\S*)?$/,
-                use: "graphql-tag/loader",
-            },
-            {
                 exclude: /node_modules/,
                 test: /\.js(\?\S*)?$/,
                 use: __babelLoader,
@@ -57,7 +52,7 @@ export default {
                     fallback: sourceMapLoader("style-loader"),
                     use: [
                         sourceMapLoader("css-loader"),
-                        __postCssLoader,
+                        sourceMapLoader("postcss-loader"),
                         sourceMapLoader("sass-loader"),
                     ],
                 }),
@@ -73,7 +68,7 @@ export default {
                                 fallback: sourceMapLoader("vue-style-loader"),
                                 use: [
                                     sourceMapLoader("css-loader"),
-                                    __postCssLoader,
+                                    sourceMapLoader("postcss-loader"),
                                     sourceMapLoader("sass-loader"),
                                 ],
                             }),
