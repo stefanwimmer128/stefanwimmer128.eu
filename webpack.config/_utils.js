@@ -1,3 +1,4 @@
+import autoprefixer from "autoprefixer";
 import {
     join,
 } from "path";
@@ -15,6 +16,16 @@ export const __babelLoader = {
                 },
             ],
         ],
+    },
+};
+
+export const __postCssLoader = {
+    loader: "postcss-loader",
+    options: {
+        plugins: [
+            autoprefixer(),
+        ],
+        sourceMap: true,
     },
 };
 

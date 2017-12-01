@@ -15,6 +15,7 @@ import {
     fileLoader,
     path,
     sourceMapLoader,
+    __postCssLoader,
 } from "./_utils";
 
 export default {
@@ -38,15 +39,6 @@ export default {
     module: {
         rules: [
             {
-                test: /\.css(\?\S*)?$/,
-                use: ExtractTextWebpackPlugin.extract({
-                    fallback: sourceMapLoader("style-loader"),
-                    use: [
-                        sourceMapLoader("css-loader"),
-                    ],
-                }),
-            },
-            {
                 test: /\.gql(\?\S*)?$/,
                 use: "graphql-tag/loader",
             },
@@ -65,6 +57,7 @@ export default {
                     fallback: sourceMapLoader("style-loader"),
                     use: [
                         sourceMapLoader("css-loader"),
+                        __postCssLoader,
                         sourceMapLoader("sass-loader"),
                     ],
                 }),
@@ -80,6 +73,7 @@ export default {
                                 fallback: sourceMapLoader("vue-style-loader"),
                                 use: [
                                     sourceMapLoader("css-loader"),
+                                    __postCssLoader,
                                     sourceMapLoader("sass-loader"),
                                 ],
                             }),
