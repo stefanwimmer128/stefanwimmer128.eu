@@ -1,40 +1,66 @@
-import autoprefixer from "autoprefixer";
+import {
+    extend,
+} from "lodash";
 import {
     join,
 } from "path";
 
 export const __babelLoader = {
-    loader: "babel-loader",
-    options: {
-        babelrc: false,
-        presets: [
-            [
-                "@babel/preset-env",
-                {
-                    modules: false,
-                    shippedProposals: true,
-                },
+    NODE: {
+        loader: "babel-loader",
+        options: {
+            babelrc: false,
+            presets: [
+                [
+                    "@babel/preset-env",
+                    {
+                        modules: false,
+                        shippedProposals: true,
+                        targets: {
+                            node: process.versions.node,
+                        },
+                        useBuiltIns: "usage",
+                    },
+                ],
             ],
-        ],
+        },
+    },
+    PUBLIC: {
+        loader: "babel-loader",
+        options: {
+            babelrc: false,
+            presets: [
+                [
+                    "@babel/preset-env",
+                    {
+                        modules: false,
+                        shippedProposals: true,
+                    },
+                ],
+            ],
+        },
     },
 };
 
-export const fileLoader = outputPath =>
-    ({
+export function fileLoader(outputPath) {
+    return {
         loader: "file-loader",
         options: {
             name: "[name].[ext]?[hash]",
             outputPath,
         },
-    });
+    };
+}
 
-export const path = (...paths) =>
-    join(__dirname, "..", ...paths);
+export function path(...path) {
+    return join(__dirname, "../", ...path);
+}
 
-export const sourceMapLoader = loader =>
-    ({
+export function sourceMapLoader(loader, options = {}) {
+    return {
         loader,
-        options: {
+        options: extend({
             sourceMap: true,
-        },
-    });
+        }, options),
+    };
+}

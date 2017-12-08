@@ -14,7 +14,9 @@ $--size-base: $font-size-base;
 @import "~element-theme-chalk/src/index.scss";
 
 body {
-    font-family: $font-family-base;
-    font-size: $font-size-base;
+    font: {
+        family: $font-family-base;
+        size: $font-size-base;
+    };
     margin: 0;
 }

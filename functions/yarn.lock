@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@babel/polyfill@^7.0.0-beta.34":
+  version "7.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.0.0-beta.34.tgz#5820375c26408ae1eb7af90753dfe2226d7e5dd0"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
 "@firebase/app@^0.1.1":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@firebase/app/-/app-0.1.2.tgz#b00565ed04686055e783695bb817ef618bf08bf6"
@@ -555,7 +562,7 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@^2.5.1:
+core-js@^2.4.0, core-js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -990,9 +997,9 @@ graphql-extensions@^0.0.x:
     core-js "^2.5.1"
     source-map-support "^0.5.0"
 
-graphql-tools@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.10.0.tgz#d2bade5dfe08fcf9fb524897d001f05a69b9a951"
+graphql-tools@^2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.12.0.tgz#6286902650537bf7f20ac87159ab5c8b2e9741f8"
   dependencies:
     apollo-utilities "^1.0.1"
     deprecated-decorator "^0.1.6"
@@ -1598,6 +1605,10 @@ readable-stream@~1.0.32:
     inherits "~2.0.1"
     isarray "0.0.1"
     string_decoder "~0.10.x"
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
 
 request@2.81.0:
   version "2.81.0"
