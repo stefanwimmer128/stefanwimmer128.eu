@@ -1,6 +1,6 @@
 type Blog {
     length: Int!
-    entries(from: Int!, to: Int!): [BlogEntry]
+    entries(from: Int!, to: Int!, reverse: Boolean): [BlogEntry]
 }
 
 type BlogEntry {

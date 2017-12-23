@@ -40,7 +40,7 @@ export default {
             {
                 exclude: /node_modules/,
                 test: /\.js(\?\S*)?$/,
-                use: __babelLoader.PUBLIC,
+                use: __babelLoader,
             },
             {
                 test: /\.md(\?\S*)?$/,
@@ -65,7 +65,7 @@ export default {
                     loader: "vue-loader",
                     options: {
                         loaders: {
-                            js: __babelLoader.PUBLIC,
+                            js: __babelLoader,
                             scss: ExtractTextWebpackPlugin.extract({
                                 fallback: sourceMapLoader("vue-style-loader"),
                                 use: [

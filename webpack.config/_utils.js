@@ -6,39 +6,18 @@ import {
 } from "path";
 
 export const __babelLoader = {
-    NODE: {
-        loader: "babel-loader",
-        options: {
-            babelrc: false,
-            presets: [
-                [
-                    "@babel/preset-env",
-                    {
-                        modules: false,
-                        shippedProposals: true,
-                        targets: {
-                            node: process.versions.node,
-                        },
-                        useBuiltIns: "usage",
-                    },
-                ],
+    loader: "babel-loader",
+    options: {
+        babelrc: false,
+        presets: [
+            [
+                "@babel/preset-env",
+                {
+                    modules: false,
+                    shippedProposals: true,
+                },
             ],
-        },
-    },
-    PUBLIC: {
-        loader: "babel-loader",
-        options: {
-            babelrc: false,
-            presets: [
-                [
-                    "@babel/preset-env",
-                    {
-                        modules: false,
-                        shippedProposals: true,
-                    },
-                ],
-            ],
-        },
+        ],
     },
 };
 

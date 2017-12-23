@@ -1,13 +1,5 @@
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import {
-    clone,
-    extend,
-    keys,
-    join,
-    set,
-} from "lodash";
-import {
-    EnvironmentPlugin,
     NoEmitOnErrorsPlugin,
 } from "webpack";
 
@@ -23,7 +15,7 @@ import {
 export default {
     devtool: "source-map",
     entry: "./src/functions",
-    externals: new RegExp(`^(${join(keys(dependencies), "|")})(\/.*)?$`),
+    externals: new RegExp(`^(${Object.keys(dependencies).join("|")})(\/.*)?$`),
     module: {
         rules: [
             {
@@ -32,7 +24,7 @@ export default {
             },
             {
                 test: /\.js(\?.*)?$/,
-                use: __babelLoader.NODE,
+                use: __babelLoader,
             },
         ],
     },
@@ -42,9 +34,6 @@ export default {
         path: path("functions/"),
     },
     plugins: [
-        new EnvironmentPlugin([
-            "NODE_ENV",
-        ]),
         new FriendlyErrorsWebpackPlugin(),
         new NoEmitOnErrorsPlugin(),
     ],

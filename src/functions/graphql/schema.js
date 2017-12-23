@@ -23,7 +23,7 @@ export default makeExecutableSchema({
                         "value",
                         value =>
                             resolve([].concat(value.val()).sort((a, b) =>
-                                new Date(a.date) - new Date(b.date),
+                                (new Date(a.date) - new Date(b.date)) * (args.reverse ? -1 : 1),
                             ).slice(args.from, args.to + 1)),
                         reject,
                     ),

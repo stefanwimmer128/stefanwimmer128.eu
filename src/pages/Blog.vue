@@ -10,7 +10,7 @@
                 fetchPolicy: "network-only",
                 query: gql`query($from: Int!, $to: Int!) {
                     blog {
-                        entries(from: $from, to: $to) {
+                        entries(from: $from, to: $to, reverse: true) {
                             date
                             message
                             title
@@ -35,6 +35,7 @@
                 },
             },
             length: {
+                fetchPolicy: "network-only",
                 query: gql`query {
                     blog {
                         length
@@ -62,7 +63,7 @@
                 this.page.index = index;
             },
             refresh() {
-                this.$apollo.queries.length.refresh();
+                this.$apollo.queries.length.refetch();
             },
             sizeChange(size) {
                 this.page.size = size;
@@ -71,13 +72,19 @@
     };
 </script>
 
+<style lang="scss" scoped>
+    .entry {
+        margin: 4px 0;
+    }
+</style>
+
 <template lang="pug">
     div
         h1 Blog
         div(element-loading-text="Loading..." v-loading="pending > 0")
             el-pagination(layout="total, sizes, prev, pager, next, jumper, slot" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
-            div.card(:key="i" v-for="(entry, i) in entries")
+            div.card(:key="i" v-for="(entry, i) in entries").entry
                 div.card-header
                     h4.card-title {{entry.title}}
                     h6.card-subtitle.text-muted ({{entry.date}})
