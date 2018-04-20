@@ -1,0 +1,28 @@
+{
+    schema: {
+        files: "server/**/*.gql",
+    },
+    query: {
+        files: [
+            {
+                match: [
+                    "client/**/*.js",
+                    "client/**/*.vue",
+                ],
+                parser: [
+                    "EmbeddedQueryParser",
+                    {
+                        startTag: "gql`",
+                        endTag: "`",
+                    },
+                ],
+                validate: {
+                    extends: "gql-rules-query",
+                    rules: {
+                        LoneAnonymousOperation: "off",
+                    },
+                },
+            },
+        ],
+    },
+}
