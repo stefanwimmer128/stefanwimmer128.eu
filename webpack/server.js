@@ -1,30 +1,29 @@
+import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
-import {
-    NoEmitOnErrorsPlugin,
-} from "webpack";
 
 import {
     dependencies,
 } from "../functions/package.json";
 
 import {
-    __babelLoader,
+    babel,
     path,
-} from "./_utils";
+} from "./config";
 
 export default {
     devtool: "source-map",
-    entry: "./src/functions",
+    entry: "./server",
     externals: new RegExp(`^(${Object.keys(dependencies).join("|")})(\/.*)?$`),
+    mode: process.env.NODE_ENV,
     module: {
         rules: [
             {
-                test: /\.gql(\?.*)?$/,
+                test: /\.gql(\?\S*)?$/,
                 use: "raw-loader",
             },
             {
-                test: /\.js(\?.*)?$/,
-                use: __babelLoader,
+                test: /\.js(\?\S*)?$/,
+                use: babel(),
             },
         ],
     },
@@ -34,7 +33,11 @@ export default {
         path: path("functions/"),
     },
     plugins: [
+        new CleanWebpackPlugin([
+            "functions/index.js*"
+        ], {
+            root: path(),
+        }),
         new FriendlyErrorsWebpackPlugin(),
-        new NoEmitOnErrorsPlugin(),
     ],
 };

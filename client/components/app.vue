@@ -1,8 +1,5 @@
 <script>
     import gql from "graphql-tag";
-    import {
-        relative,
-    } from "path";
     
     export default {
         apollo: {
@@ -15,14 +12,12 @@
                     }
                 }`,
                 update: data =>
-                    data.menu.map(item =>
-                        item.to !== null ? {
-                            ...item,
-                            to: JSON.parse(item.to),
-                        } : item,
-                    ),
+                    data.menu,
             },
         },
+        data: () => ({
+            menu: [],
+        }),
     };
 </script>
 
@@ -35,7 +30,7 @@
             div.collapse.navbar-collapse#navbar
                 div.navbar-nav
                     template(v-for="(entry, i) in menu")
-                        router-link.nav-item.nav-link(active-class="active" :key="i" :to="entry.to" v-if="entry.to !== null") {{entry.title}}
-                        a.nav-item.nav-link(:href="entry.href" :key="i" target="_blank" v-if="entry.href !== null") {{entry.title}}
+                        router-link.nav-item.nav-link(:key="i" :to="JSON.parse(entry.to)" v-if="entry.to") {{entry.title}}
+                        a.nav-item.nav-link(:href="entry.href" :key="i" target="_blank" v-if="entry.href") {{entry.title}}
         router-view.px-2.py-2
 </template>

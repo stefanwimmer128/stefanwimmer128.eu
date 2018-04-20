@@ -2,12 +2,12 @@
     import gql from "graphql-tag";
     import moment from "moment";
     
-    import markdown from "../components/markdown";
+    import markdown from "../components/markdown.vue";
     
     export default {
         apollo: {
             entries: {
-                fetchPolicy: "network-only",
+                manual: true,
                 query: gql`query($from: Int!, $to: Int!) {
                     blog {
                         entries(from: $from, to: $to, reverse: true) {
@@ -20,13 +20,10 @@
                 skip() {
                     return this.length <= 0;
                 },
-                update: data =>
-                    data.blog.entries.map(entry =>
-                        ({
-                            ...entry,
-                            date: moment(entry.date).format("llll"),
-                        }),
-                    ),
+                result(result) {
+                    if (result.data)
+                        this.entries = result.data.blog.entries;
+                },
                 variables() {
                     return {
                         from: (this.page.index - 1) * this.page.size,
@@ -35,7 +32,6 @@
                 },
             },
             length: {
-                fetchPolicy: "network-only",
                 query: gql`query {
                     blog {
                         length
@@ -48,19 +44,20 @@
         components: {
             markdown,
         },
-        data: () =>
-            ({
-                entries: [],
-                length: 0,
-                page: {
-                    index: 1,
-                    size: 10,
-                },
-                pending: 0,
-            }),
+        data: () => ({
+            entries: [],
+            length: 0,
+            page: {
+                index: 1,
+                size: 10,
+            },
+        }),
         methods: {
             currentChange(index) {
                 this.page.index = index;
+            },
+            parseDate(date) {
+                return moment(date).format("llll");
             },
             refresh() {
                 this.$apollo.queries.length.refetch();
@@ -73,7 +70,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .entry {
+    div.card {
         margin: 4px 0;
     }
 </style>
@@ -81,14 +78,16 @@
 <template lang="pug">
     div
         h1 Blog
-        div(element-loading-text="Loading..." v-loading="pending > 0")
+        div(element-loading-text="Loading..." v-loading="$apollo.loading")
             el-pagination(layout="total, sizes, prev, pager, next, jumper, slot" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
-            div.card(:key="i" v-for="(entry, i) in entries").entry
-                div.card-header
-                    h4.card-title {{entry.title}}
-                    h6.card-subtitle.text-muted ({{entry.date}})
-                markdown.card-body.card-text(:markdown="entry.message")
+            template(v-if="length > 0")
+                div.card(:key="i" v-for="(entry, i) in entries")
+                    div.card-header
+                        h4.card-title {{entry.title}}
+                        h6.card-subtitle.text-muted ({{parseDate(entry.date)}})
+                    markdown(:markdown="entry.message").card-body.card-text
+            span(v-else) No entries available!
             el-pagination(layout="total, sizes, prev, pager, next, jumper, slot" @current-change="currentChange" :page-sizes="[ 5, 10, 20, ]" @size-change="sizeChange" :total="length")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
 </template>

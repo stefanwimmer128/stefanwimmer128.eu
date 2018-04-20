@@ -1,7 +1,7 @@
-import About from "../../pages/About";
-import Blog from "../../pages/Blog";
-import Error404 from "../../pages/Error404";
-import Home from "../../pages/Home";
+import About from "../../pages/About.vue";
+import Blog from "../../pages/Blog.vue";
+import Error404 from "../../pages/Error404.vue";
+import Home from "../../pages/Home.vue";
 
 export default [
     {

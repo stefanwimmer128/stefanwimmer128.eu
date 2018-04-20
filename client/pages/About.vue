@@ -1,5 +1,5 @@
 <script>
-    import markdown from "../components/markdown";
+    import markdown from "../components/markdown.vue";
     
     import template from "./About.md";
     
@@ -7,14 +7,12 @@
         components: {
             markdown,
         },
-        data: () =>
-            ({
-                template,
-            }),
+        data: () => ({
+            template,
+        }),
     };
 </script>
 
 <template lang="pug">
     markdown(:markdown="template")
 </template>
-

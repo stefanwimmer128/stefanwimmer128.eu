@@ -12,7 +12,7 @@ import VueApollo from "vue-apollo";
 
 Vue.use(VueApollo);
 
-export const apollo = new ApolloClient({
+export const defaultClient = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
         uri: "/graphql",
@@ -20,8 +20,10 @@ export const apollo = new ApolloClient({
 });
 
 export const apolloProvider = new VueApollo({
-    defaultClient: apollo,
+    defaultClient,
     defaultOptions: {
-        $loadingKey: "pending",
+        $fetchPolicy: "network-only",
     },
 });
+
+export const provide = apolloProvider.provide();

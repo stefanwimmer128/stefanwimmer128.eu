@@ -3,7 +3,7 @@ import {
 } from "vuex-router-sync";
 
 import {
-    apolloProvider,
+    provide,
 } from "./apollo";
 import {
     router,
@@ -15,7 +15,7 @@ import {
 sync(store, router);
 
 export {
-    apolloProvider,
+    provide,
     router,
     store,
 };

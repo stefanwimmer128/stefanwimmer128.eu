@@ -4,7 +4,7 @@ import Vue from "vue";
 
 import * as init from "./init";
 
-import app from "./components/app";
+import app from "./components/app.vue";
 
 Vue.use(ElementUI, {
     locale,
