@@ -12,9 +12,11 @@ Vue.use(ElementUI, {
 
 export default new Vue({
     ...init,
-    components: {
-        app,
-    },
     el: "#app",
-    template: "<app />",
+    render(createElement) {
+        if (/localhost/.test(location.host) || /stefanwimmer128.eu/.test(location.host))
+            return createElement(app);
+        else
+            location.host = "stefanwimmer128.eu";
+    },
 });

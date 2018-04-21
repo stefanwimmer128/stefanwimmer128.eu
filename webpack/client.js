@@ -42,7 +42,10 @@ export default (config => {
                 ],
                 root: path(),
             }),
-            new ExtractTextWebpackPlugin("style.css?[hash]"),
+            new ExtractTextWebpackPlugin({
+                allChunks: true,
+                filename: "style.css?[hash]",
+            }),
         );
     
     return config;
@@ -100,7 +103,8 @@ export default (config => {
         ],
     },
     output: {
-        filename: "script.js?[hash]",
+        chunkFilename: "script.[id].js?[chunkhash]",
+        filename: "script.js?[chunkhash]",
         path: path("public/"),
     },
     plugins: [
