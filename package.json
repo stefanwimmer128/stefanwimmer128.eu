@@ -2,14 +2,12 @@
   "name": "stefanwimmer128.eu",
   "description": "Source code for stefanwimmer128.eu",
   "scripts": {
-    "babel-node": "babel-node --presets=@babel/preset-env",
-    "build": "yarn run build-server && yarn run build-client",
-    "build-client": "yarn run webpack --config webpack/client.js",
-    "build-server": "yarn run webpack --config webpack/server.js",
+    "build": "yarn build-server && yarn build-client",
+    "build-client": "NODE_ENV=\"${NODE_ENV:-development}\" babel-node --presets=@babel/preset-env \"$(which webpack-cli)\" --config webpack/client.js",
+    "build-server": "NODE_ENV=\"${NODE_ENV:-development}\" babel-node --presets=@babel/preset-env \"$(which webpack-cli)\" --config webpack/server.js",
     "deploy": "firebase deploy",
-    "serve": "firebase serve",
-    "webpack": "NODE_ENV=\"${NODE_ENV:-development}\" yarn run babel-node \"$(which webpack-cli)\"",
-    "webpack-dev-server": "NODE_ENV=development yarn run babel-node \"$(which webpack-dev-server)\""
+    "dev-server": "NODE_ENV=development babel-node --presets=@babel/preset-env \"$(which webpack-dev-server)\" --config webpack/client.js",
+    "serve": "firebase serve"
   },
   "repository": {
     "type": "git",
