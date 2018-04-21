@@ -1,10 +1,6 @@
 <script>
     import gql from "graphql-tag";
     
-    import {
-        router,
-    } from "../init/router";
-    
     export default {
         apollo: {
             menu: {
@@ -23,11 +19,11 @@
             menu: [],
         }),
         mounted() {
-            router.beforeEach((to, from, next) => {
+            this.$router.beforeEach((to, from, next) => {
                 this.$store.commit("loading", true);
                 next();
             });
-            router.afterEach((to, from) => {
+            this.$router.afterEach((to, from) => {
                 this.$store.commit("loading", false);
             });
         },
