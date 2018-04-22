@@ -3519,13 +3519,13 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-theme-chalk@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/element-theme-chalk/-/element-theme-chalk-2.3.5.tgz#dde142f827aec8ac1d2c1154fd062078b3d08345"
+element-theme-chalk@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/element-theme-chalk/-/element-theme-chalk-2.3.6.tgz#f587eae68d9e6d1fd1bc164a4958e531f97b5865"
 
-element-ui@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.3.5.tgz#b094ff4452a58a728100bd06b4d3b75c2b889942"
+element-ui@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.3.6.tgz#6771aa41a51bc967bdaad64e429ff50b528b15e3"
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -9907,9 +9907,9 @@ webpack-addons@^1.1.5:
   dependencies:
     jscodeshift "^0.4.0"
 
-webpack-cli@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-2.0.14.tgz#71d03d8c10547c1dfd674f71ff3b0457c33a74cd"
+webpack-cli@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-2.0.15.tgz#7532066556b03bd3292285ac08537e28844616c2"
   dependencies:
     chalk "^2.3.2"
     cross-spawn "^6.0.5"
