@@ -2,7 +2,7 @@
     import gql from "graphql-tag";
     import moment from "moment";
     
-    import markdown from "../components/markdown.vue";
+    import markdown from "../components/markdown";
     
     export default {
         apollo: {

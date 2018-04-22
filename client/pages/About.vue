@@ -1,5 +1,5 @@
 <script>
-    import markdown from "../components/markdown.vue";
+    import markdown from "../components/markdown";
     
     import template from "./About.md";
     
