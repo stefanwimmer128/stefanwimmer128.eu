@@ -1,8 +1,8 @@
 import CleanWebpackPlugin from "clean-webpack-plugin";
-import ExtractTextWebpackPlugin from "extract-text-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackTemplate from "html-webpack-template";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {
     EnvironmentPlugin,
     HotModuleReplacementPlugin,
@@ -26,15 +26,14 @@ export default (config => {
     
     if (process.argv.some(arg =>
         arg.includes("webpack-dev-server"),
-    ))
+    )) {
+        config.output.filename += "?[hash]";
         config.plugins.push(
-            new ExtractTextWebpackPlugin({
-                disable: true,
-            }),
             new HotModuleReplacementPlugin(),
             new NamedModulesPlugin(),
         );
-    else
+    } else {
+        config.output.filename += "?[chunkhash]";
         config.plugins.push(
             new CleanWebpackPlugin("public/", {
                 exclude: [
@@ -42,11 +41,11 @@ export default (config => {
                 ],
                 root: path(),
             }),
-            new ExtractTextWebpackPlugin({
-                allChunks: true,
-                filename: "style.css?[hash]",
+            new MiniCssExtractPlugin({
+                filename: "styles/[name].css?[contenthash]",
             }),
         );
+    }
     
     return config;
 })({
@@ -61,7 +60,7 @@ export default (config => {
                     "/graphiql",
                     "/graphql",
                 ],
-                target: process.env.BACKEND_URL || "http://127.0.0.1:5000",
+                target: process.env.REMOTE === "true" ? "https://www.stefanwimmer128.eu" : (process.env.BACKEND_URL || "http://127.0.0.1:5000"),
             },
         ],
     },
@@ -98,13 +97,13 @@ export default (config => {
             },
             {
                 test: /\.(ttf|woff)$/,
-                use: fileLoader("fonts/"),
+                use: fileLoader("/fonts/"),
             },
         ],
     },
     output: {
-        chunkFilename: "script.[id].js?[chunkhash]",
-        filename: "script.js?[chunkhash]",
+        chunkFilename: "scripts/[id].js?[chunkhash]",
+        filename: "scripts/main.js",
         path: path("public/"),
     },
     plugins: [

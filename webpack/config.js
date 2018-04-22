@@ -2,7 +2,7 @@ import autoprefixer from "autoprefixer";
 import {
     browserslist,
 } from "bootstrap/package.json";
-import ExtractTextWebpackPlugin from "extract-text-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {
     join,
 } from "path";
@@ -50,20 +50,20 @@ export function postcss() {
 }
 
 export function scssLoader(fallback, vue = false) {
-    return ExtractTextWebpackPlugin.extract({
-        fallback,
-        use: [
-            sourceMapLoader("css-loader", {
-                importLoaders: vue ? 1 : 2,
-            }),
-            ...(vue ? [] : [sourceMapLoader("postcss-loader", {
-                plugins: postcss(),
-            })]),
-            sourceMapLoader("sass-loader", {
-                outputStyle: "expanded",
-            }),
-        ],
-    });
+    return [
+        process.argv.some(arg =>
+            arg.includes("webpack-dev-server"),
+        ) ? fallback : MiniCssExtractPlugin.loader,
+        sourceMapLoader("css-loader", {
+            importLoaders: vue ? 1 : 2,
+        }),
+        ...(vue ? [] : [sourceMapLoader("postcss-loader", {
+            plugins: postcss(),
+        })]),
+        sourceMapLoader("sass-loader", {
+            outputStyle: "expanded",
+        }),
+    ];
 }
 
 export function sourceMapLoader(loader, options) {
