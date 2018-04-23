@@ -21,7 +21,12 @@ export function babel() {
                         modules: false,
                     },
                 ],
-                "@babel/preset-stage-0",
+                [
+                    "@babel/preset-stage-0",
+                    {
+                        decoratorsLegacy: true,
+                    },
+                ],
             ],
         },
     };
