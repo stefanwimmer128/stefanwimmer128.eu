@@ -35,7 +35,7 @@
 </script>
 
 <template lang="pug">
-    div#app(v-loading="$apollo.loading")
+    div#app(v-loading="$apollo.loading").h-100
         div(v-if="error").p-2
             h1 Unknown Error
             h2 Please try again later
