@@ -1,9 +1,6 @@
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
-
-import {
-    dependencies,
-} from "../functions/package.json";
+import nodeExternals from "webpack-node-externals";
 
 import {
     babel,
@@ -13,7 +10,11 @@ import {
 export default {
     devtool: "source-map",
     entry: "./server",
-    externals: new RegExp(`^(${Object.keys(dependencies).join("|")})(\/.*)?$`),
+    externals: [
+        nodeExternals({
+            modulesDir: path("functions/node_modules"),
+        }),
+    ],
     mode: process.env.NODE_ENV,
     module: {
         rules: [
@@ -23,7 +24,7 @@ export default {
             },
             {
                 test: /\.js(\?\S*)?$/,
-                use: babel(),
+                use: babel(true),
             },
         ],
     },

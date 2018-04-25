@@ -7,7 +7,11 @@ import {
     join,
 } from "path";
 
-export function babel() {
+export const __devServer = process.argv.some(arg =>
+    arg.includes("webpack-dev-server"),
+);
+
+export function babel(functions = false) {
     return {
         loader: "babel-loader",
         options: {
@@ -15,10 +19,12 @@ export function babel() {
                 [
                     "@babel/preset-env",
                     {
-                        targets: {
+                        modules: false,
+                        targets: functions ? {
+                            node: process.versions.node,
+                        } : {
                             browsers: browserslist,
                         },
-                        modules: false,
                     },
                 ],
                 [
@@ -46,25 +52,19 @@ export function path(...path) {
     return join(__dirname, "../", ...path);
 }
 
-export function postcss() {
+export function scssLoader(fallback) {
     return [
-        autoprefixer({
-            browsers: browserslist,
-        }),
-    ];
-}
-
-export function scssLoader(fallback, vue = false) {
-    return [
-        process.argv.some(arg =>
-            arg.includes("webpack-dev-server"),
-        ) ? fallback : MiniCssExtractPlugin.loader,
+        __devServer ? fallback : MiniCssExtractPlugin.loader,
         sourceMapLoader("css-loader", {
-            importLoaders: vue ? 1 : 2,
+            importLoaders: 2,
         }),
-        ...(vue ? [] : [sourceMapLoader("postcss-loader", {
-            plugins: postcss(),
-        })]),
+        sourceMapLoader("postcss-loader", {
+            plugins: [
+                autoprefixer({
+                    browsers: browserslist,
+                }),
+            ],
+        }),
         sourceMapLoader("sass-loader", {
             outputStyle: "expanded",
         }),

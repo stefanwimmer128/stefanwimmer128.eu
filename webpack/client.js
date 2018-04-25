@@ -4,16 +4,19 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackTemplate from "html-webpack-template";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {
+    VueLoaderPlugin,
+} from "vue-loader";
+import {
     EnvironmentPlugin,
     HotModuleReplacementPlugin,
     NamedModulesPlugin,
 } from "webpack";
 
 import {
+    __devServer,
     babel,
     fileLoader,
     path,
-    postcss,
     scssLoader,
 } from "./config";
 
@@ -24,9 +27,7 @@ export default (config => {
         config.output.libraryTarget = "window";
     }
     
-    if (process.argv.some(arg =>
-        arg.includes("webpack-dev-server"),
-    )) {
+    if (__devServer) {
         config.output.filename += "?[hash]";
         config.plugins.push(
             new HotModuleReplacementPlugin(),
@@ -71,33 +72,36 @@ export default (config => {
         rules: [
             {
                 exclude: /node_modules/,
+                loader: babel(),
                 test: /\.js$/,
-                use: babel(),
             },
             {
+                loader: "raw-loader",
                 test: /\.md$/,
-                use: "raw-loader",
             },
             {
-                test: /\.scss$/,
-                use: scssLoader("style-loader"),
+                loader: "pug-plain-loader",
+                test: /\.pug$/,
             },
             {
-                test: /\.vue$/,
-                use: {
-                    loader: "vue-loader",
-                    options: {
-                        loaders: {
-                            js: babel(),
-                            scss: scssLoader("vue-style-loader", true),
-                        },
-                        postcss: postcss(),
+                oneOf: [
+                    {
+                        loader: scssLoader("vue-style-loader"),
+                        resourceQuery: /^\?vue/,
                     },
-                },
+                    {
+                        loader: scssLoader("style-loader"),
+                    },
+                ],
+                test: /\.scss$/,
             },
             {
+                loader: "vue-loader",
+                test: /\.vue$/,
+            },
+            {
+                loader: fileLoader("/fonts/"),
                 test: /\.(ttf|woff)$/,
-                use: fileLoader("/fonts/"),
             },
         ],
     },
@@ -124,6 +128,7 @@ export default (config => {
             template: HtmlWebpackTemplate,
             title: "stefanwimmer128",
         }),
+        new VueLoaderPlugin(),
     ],
     resolve: {
         alias: {
