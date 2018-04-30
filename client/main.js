@@ -14,9 +14,12 @@ export default new Vue({
     ...init,
     el: "#app",
     render(createElement) {
-        if (/localhost/.test(location.host) || /stefanwimmer128.eu/.test(location.host))
+        if ([
+            "localhost:5000",
+            "www.stefanwimmer128.eu",
+        ].includes(location.host))
             return createElement(app);
         else
-            location.host = "stefanwimmer128.eu";
+            location.host = "www.stefanwimmer128.eu";
     },
 });

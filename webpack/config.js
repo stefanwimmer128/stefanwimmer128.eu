@@ -25,6 +25,7 @@ export function babel(functions = false) {
                         } : {
                             browsers: browserslist,
                         },
+                        useBuiltIns: "entry",
                     },
                 ],
                 [

@@ -2,9 +2,6 @@ import admin from "firebase-admin";
 import {
     makeExecutableSchema,
 } from "graphql-tools";
-import {
-    join,
-} from "path";
 
 import typeDefs from "./typeDefs.gql";
 

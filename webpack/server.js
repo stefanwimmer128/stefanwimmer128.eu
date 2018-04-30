@@ -41,4 +41,5 @@ export default {
         }),
         new FriendlyErrorsWebpackPlugin(),
     ],
+    target: "node",
 };
