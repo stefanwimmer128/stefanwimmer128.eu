@@ -14,28 +14,17 @@
                         to
                     }
                 }`,
-                update: data =>
-                    data.menu,
             },
         },
         data: () => ({
             error: null,
             menu: [],
         }),
-        mounted() {
-            this.$router.beforeEach((to, from, next) => {
-                this.$store.commit("loading", true);
-                next();
-            });
-            this.$router.afterEach((to, from) => {
-                this.$store.commit("loading", false);
-            });
-        },
     };
 </script>
 
 <template lang="pug">
-    div#app(v-loading="$apollo.loading").h-100
+    div#app(v-loading="$apollo.loading > 0").h-100
         div(v-if="error").p-2
             h1 Unknown Error
             h2 Please try again later

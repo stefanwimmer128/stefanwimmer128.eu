@@ -1,9 +1,4 @@
 type Blog {
-    length: Int!
-    entries(from: Int!, to: Int!, reverse: Boolean): [BlogEntry]
-}
-
-type BlogEntry {
     date: String!
     message: String!
     title: String!
@@ -16,6 +11,6 @@ type Menu {
 }
 
 type Query {
-    blog: Blog
+    blog(offset: Int!, limit: Int!): [Blog]
     menu: [Menu]
 }

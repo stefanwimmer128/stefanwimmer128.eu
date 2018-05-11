@@ -12,14 +12,29 @@ Vue.use(ElementUI, {
 
 export default new Vue({
     ...init,
+    data: {
+        app: false,
+    },
     el: "#app",
-    render(createElement) {
-        if ([
+    mounted() {
+        if (! [
             "localhost:5000",
             "www.stefanwimmer128.eu",
         ].includes(location.host))
+            return void (location.host = "www.stefanwimmer128.eu");
+        
+        this.app = true;
+        
+        this.$router.beforeEach((to, from, next) => {
+            this.$store.commit("loading", true);
+            next();
+        });
+        this.$router.afterEach((to, from) => {
+            this.$store.commit("loading", false);
+        });
+    },
+    render(createElement) {
+        if (this.app)
             return createElement(app);
-        else
-            location.host = "www.stefanwimmer128.eu";
     },
 });

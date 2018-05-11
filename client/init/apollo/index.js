@@ -21,9 +21,6 @@ export const defaultClient = new ApolloClient({
 
 export const apolloProvider = new VueApollo({
     defaultClient,
-    defaultOptions: {
-        $fetchPolicy: "network-only",
-    },
 });
 
 export const provide = apolloProvider.provide();
