@@ -1,20 +1,30 @@
-import autoprefixer from "autoprefixer";
-import {
+const autoprefixer = require("autoprefixer");
+const {
     browserslist,
-} from "bootstrap/package.json";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {
+} = require("bootstrap/package.json");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {
     join,
-} from "path";
+} = require("path");
 
-export const __devServer = process.argv.some(arg =>
-    arg.includes("webpack-dev-server"),
+const __devServer = exports.__devServer = process.argv.some(arg =>
+    arg.includes("webpack-dev-server")
 );
 
-export function babel(functions = false) {
+const babel = exports.babel = function babel(functions = false) {
     return {
         loader: "babel-loader",
         options: {
+            plugins: [
+                [
+                    "@babel/plugin-transform-runtime",
+                    {
+                        helpers: true,
+                        polyfill: functions,
+                        regenerator: functions,
+                    },
+                ],
+            ],
             presets: [
                 [
                     "@babel/preset-env",
@@ -22,10 +32,8 @@ export function babel(functions = false) {
                         modules: false,
                         targets: functions ? {
                             node: process.versions.node,
-                        } : {
-                            browsers: browserslist,
-                        },
-                        useBuiltIns: "entry",
+                        } : void 0,
+                        useBuiltIns: functions ? "entry" : void 0,
                     },
                 ],
                 [
@@ -39,7 +47,7 @@ export function babel(functions = false) {
     };
 }
 
-export function fileLoader(outputPath) {
+const fileLoader = exports.fileLoader = function fileLoader(outputPath) {
     return {
         loader: "file-loader",
         options: {
@@ -49,11 +57,11 @@ export function fileLoader(outputPath) {
     };
 }
 
-export function path(...path) {
+const path = exports.path = function path(...path) {
     return join(__dirname, "../", ...path);
 }
 
-export function scssLoader(fallback) {
+const sccsLoader = exports.scssLoader = function scssLoader(fallback) {
     return [
         __devServer ? fallback : MiniCssExtractPlugin.loader,
         sourceMapLoader("css-loader", {
@@ -72,7 +80,7 @@ export function scssLoader(fallback) {
     ];
 }
 
-export function sourceMapLoader(loader, options) {
+const sourceMapLoader = exports.sourceMapLoader = function sourceMapLoader(loader, options) {
     return {
         loader,
         options: Object.assign({

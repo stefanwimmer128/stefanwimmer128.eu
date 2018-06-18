@@ -1,26 +1,26 @@
-import CleanWebpackPlugin from "clean-webpack-plugin";
-import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import HtmlWebpackTemplate from "html-webpack-template";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackTemplate = require("html-webpack-template");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {
     VueLoaderPlugin,
-} from "vue-loader";
-import {
+} = require("vue-loader");
+const {
     EnvironmentPlugin,
     HotModuleReplacementPlugin,
     NamedModulesPlugin,
-} from "webpack";
+} = require("webpack");
 
-import {
+const {
     __devServer,
     babel,
     fileLoader,
     path,
     scssLoader,
-} from "./config";
+} = require("./config");
 
-export default (config => {
+module.exports = (config => {
     if (config.mode === "development") {
         config.output.library = "$";
         config.output.libraryExport = "default";
@@ -31,7 +31,7 @@ export default (config => {
         config.output.filename += "?[hash]";
         config.plugins.push(
             new HotModuleReplacementPlugin(),
-            new NamedModulesPlugin(),
+            new NamedModulesPlugin()
         );
     } else {
         config.output.filename += "?[chunkhash]";
@@ -44,7 +44,7 @@ export default (config => {
             }),
             new MiniCssExtractPlugin({
                 filename: "styles/[name].css?[contenthash]",
-            }),
+            })
         );
     }
     

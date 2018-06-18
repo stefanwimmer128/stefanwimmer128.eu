@@ -1,13 +1,13 @@
-import CleanWebpackPlugin from "clean-webpack-plugin";
-import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
-import nodeExternals from "webpack-node-externals";
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const nodeExternals = require("webpack-node-externals");
 
-import {
+const {
     babel,
     path,
-} from "./config";
+} = require("./config");
 
-export default {
+module.exports = {
     devtool: "source-map",
     entry: "./server",
     externals: [
