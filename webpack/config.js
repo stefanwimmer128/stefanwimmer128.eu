@@ -33,7 +33,7 @@ const babel = exports.babel = function babel(functions = false) {
                         targets: functions ? {
                             node: process.versions.node,
                         } : void 0,
-                        useBuiltIns: functions ? "entry" : void 0,
+                        useBuiltIns: functions ? void 0 : "entry",
                     },
                 ],
                 [

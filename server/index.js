@@ -1,5 +1,3 @@
-import "@babel/polyfill";
-
 import admin from "firebase-admin";
 import {
     config,
