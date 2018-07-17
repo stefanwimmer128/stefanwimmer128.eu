@@ -1,8 +1,12 @@
+const autoprefixer = require("autoprefixer");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTemplate = require("html-webpack-template");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {
+    join,
+} = require("path");
 const {
     VueLoaderPlugin,
 } = require("vue-loader");
@@ -12,46 +16,39 @@ const {
     NamedModulesPlugin,
 } = require("webpack");
 
-const {
-    __devServer,
-    babel,
-    fileLoader,
-    path,
-    scssLoader,
-} = require("./config");
+const __devServer = exports.__devServer = process.argv.some(arg =>
+    arg.includes("webpack-dev-server")
+);
 
-module.exports = (config => {
-    if (config.mode === "development") {
-        config.output.library = "$";
-        config.output.libraryExport = "default";
-        config.output.libraryTarget = "window";
-    }
-    
-    if (__devServer) {
-        config.output.filename += "?[hash]";
-        config.plugins.push(
-            new HotModuleReplacementPlugin(),
-            new NamedModulesPlugin()
-        );
-    } else {
-        config.output.filename += "?[chunkhash]";
-        config.plugins.push(
-            new CleanWebpackPlugin("public/", {
-                exclude: [
-                    "favicon.ico",
-                ],
-                root: path(),
-            }),
-            new MiniCssExtractPlugin({
-                filename: "styles/[name].css?[contenthash]",
-            })
-        );
-    }
-    
-    return config;
-})({
+function sourceMapLoader(loader, options) {
+    return {
+        loader,
+        options: Object.assign({
+            sourceMap: true,
+        }, options),
+    };
+}
+
+function scssLoader(fallback) {
+    return [
+        __devServer ? fallback : MiniCssExtractPlugin.loader,
+        sourceMapLoader("css-loader", {
+            importLoaders: 2,
+        }),
+        sourceMapLoader("postcss-loader", {
+            plugins: [
+                autoprefixer(),
+            ],
+        }),
+        sourceMapLoader("sass-loader", {
+            outputStyle: "expanded",
+        }),
+    ];
+}
+
+const config = module.exports = {
     devServer: {
-        contentBase: path("public/"),
+        contentBase: join(__dirname, "public/"),
         historyApiFallback: true,
         hot: true,
         proxy: [
@@ -72,7 +69,26 @@ module.exports = (config => {
         rules: [
             {
                 exclude: /node_modules/,
-                loader: babel(),
+                loader: "babel-loader",
+                options: {
+                    plugins: [
+                        "@babel/plugin-transform-runtime",
+                    ],
+                    presets: [
+                        [
+                            "@babel/preset-env",
+                            {
+                                modules: false,
+                            },
+                        ],
+                        [
+                            "@babel/preset-stage-0",
+                            {
+                                decoratorsLegacy: true,
+                            },
+                        ],
+                    ],
+                },
                 test: /\.js$/,
             },
             {
@@ -100,7 +116,11 @@ module.exports = (config => {
                 test: /\.vue$/,
             },
             {
-                loader: fileLoader("/fonts/"),
+                loader: "file-loader",
+                options: {
+                    name: "[name].[ext]?[hash]",
+                    outputPath: "/fonts/",
+                },
                 test: /\.(ttf|woff)$/,
             },
         ],
@@ -108,7 +128,7 @@ module.exports = (config => {
     output: {
         chunkFilename: "scripts/[id].js?[chunkhash]",
         filename: "scripts/main.js",
-        path: path("public/"),
+        path: join(__dirname, "public/"),
     },
     plugins: [
         new EnvironmentPlugin([
@@ -135,4 +155,30 @@ module.exports = (config => {
             "vue$": "vue/dist/vue.esm.js",
         },
     },
-});
+};
+
+if (config.mode === "development") {
+    config.output.library = "$";
+    config.output.libraryExport = "default";
+    config.output.libraryTarget = "window";
+}
+
+if (__devServer) {
+    config.output.filename += "?[hash]";
+    config.plugins.push(
+        new HotModuleReplacementPlugin(),
+        new NamedModulesPlugin()
+    );
+} else {
+    config.output.filename += "?[chunkhash]";
+    config.plugins.push(
+        new CleanWebpackPlugin("public/", {
+            exclude: [
+                "favicon.ico",
+            ],
+        }),
+        new MiniCssExtractPlugin({
+            filename: "styles/[name].css?[contenthash]",
+        })
+    );
+}
