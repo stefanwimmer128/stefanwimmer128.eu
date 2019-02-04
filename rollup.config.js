@@ -1,24 +1,34 @@
-import externals from "@yelo/rollup-node-external";
+import external from "@yelo/rollup-node-external";
+import {
+    join,
+} from "path";
 import babel from "rollup-plugin-babel";
+import progress from "rollup-plugin-progress";
 import resolve from "rollup-plugin-node-resolve";
-import replace from "rollup-plugin-replace";
 import string from "rollup-plugin-string";
 
 export default {
-    input: "./server/index.js",
+    input: "./src/server/index.js",
     output: {
-        file: "functions/index.js",
+        file: join(__dirname, "functions/index.js"),
         format: "cjs",
         sourcemap: true,
     },
     plugins: [
-        resolve(),
+        progress(),
+        resolve({
+            preferBuiltins: true,
+            customResolveOptions: {
+                moduleDirectory: join(__dirname, "functions/node_modules"),
+            },
+        }),
         string({
             include: "**/*.gql",
         }),
         babel({
+            exclude: "node_modules/**",
             plugins: [
-                "@babel/plugin-transform-runtime"
+                "@babel/plugin-transform-runtime",
             ],
             presets: [
                 [
@@ -26,24 +36,18 @@ export default {
                     {
                         modules: false,
                         targets: {
-                            node: process.versions.node,
+                            node: "8",
                         },
-                    },
-                ],
-                [
-                    "@babel/preset-stage-0",
-                    {
-                        decoratorsLegacy: true,
                     },
                 ],
             ],
             runtimeHelpers: true,
         }),
-        replace({
-            "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-        }),
     ],
-    external: externals({
-        modulesDir: "functions/node_modules",
+    external: external({
+        modulesDir: join(__dirname, "functions/node_modules"),
     }),
+    watch: {
+        clearScreen: false,
+    },
 };

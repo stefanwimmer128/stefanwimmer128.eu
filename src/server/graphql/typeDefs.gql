@@ -1,0 +1,13 @@
+type Blog {
+    date: String!
+    message: String!
+    title: String!
+}
+
+type Query {
+    blog(offset: Int!, limit: Int!): [Blog!]!
+}
+
+schema {
+    query: Query
+}

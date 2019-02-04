@@ -5,9 +5,10 @@ import routes from "./routes";
 
 Vue.use(VueRouter);
 
-export const router = new VueRouter({
+export default new VueRouter({
+    mode: "history",
+    fallback: false,
     linkActiveClass: "active",
     linkExactActiveClass: "active",
-    mode: "history",
     routes,
 });

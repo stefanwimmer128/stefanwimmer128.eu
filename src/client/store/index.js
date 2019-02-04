@@ -4,7 +4,10 @@ import createLogger from "vuex/dist/logger";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
+    state: {
+        loading: true,
+    },
     mutations: {
         loading(state, value) {
             state.loading = value;
@@ -14,8 +17,5 @@ export const store = new Vuex.Store({
         createLogger({
             collapsed: false,
         }),
-    ] : [],
-    state: {
-        loading: true,
-    },
+    ] : []
 });

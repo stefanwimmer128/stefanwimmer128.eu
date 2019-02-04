@@ -1,13 +1,13 @@
 {
     schema: {
-        files: "server/**/*.gql",
+        files: "src/server/**/*.gql"
     },
     query: {
         files: [
             {
                 match: [
-                    "client/**/*.js",
-                    "client/**/*.vue",
+                    "src/client/**/*.js",
+                    "src/client/**/*.vue",
                 ],
                 parser: [
                     "EmbeddedQueryParser",

@@ -1,10 +1,12 @@
 import "source-map-support/register";
 
-import admin from "firebase-admin";
+import {
+    initializeApp,
+} from "firebase-admin";
 import {
     config,
 } from "firebase-functions";
 
-admin.initializeApp(config().firebase);
+initializeApp(config().firebase);
 
 export * from "./graphql";

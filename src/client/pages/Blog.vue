@@ -2,12 +2,9 @@
     import gql from "graphql-tag";
     import moment from "moment";
     
-    import markdown from "../components/markdown";
-    
     export default {
         apollo: {
             blog: {
-                fetchPolicy: "network-only",
                 query: gql`query($offset: Int!, $limit: Int!) {
                     blog(offset: $offset, limit: $limit) {
                         date
@@ -23,12 +20,10 @@
                 },
             },
         },
-        components: {
-            markdown,
-        },
         data: () => ({
-            blog: [],
             moment,
+            
+            blog: [],
             page: 1,
             size: 10,
         }),
@@ -59,8 +54,8 @@
                 div.card-header
                     h4.card-title {{entry.title}}
                     h6.card-subtitle.text-muted ({{moment(entry.date).format("llll")}})
-                markdown(:markdown="entry.message").card-body.card-text
-            span(v-if="blog.length === 0") No entries available!
+                div(:is="{ template: `<div>${entry.message}</div>` }").card-body.card-text
+            span(v-if="blog.length === 0").ml-5.text-muted No entries available!
             el-pagination(layout="sizes, prev, jumper, next, slot" :current-page.sync="page" :page-size="size" :page-sizes="[ 5, 10, 20 ]" @size-change="updateSize")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
 </template>

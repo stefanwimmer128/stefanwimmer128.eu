@@ -3,10 +3,6 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/graphiql",
-        "function": "graphiql"
-      },
-      {
         "source": "/graphql",
         "function": "graphql"
       },
@@ -15,9 +11,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
   }
 }
