@@ -5,7 +5,9 @@ import {
 import babel from "rollup-plugin-babel";
 import progress from "rollup-plugin-progress";
 import resolve from "rollup-plugin-node-resolve";
-import string from "rollup-plugin-string";
+import {
+    string,
+} from "rollup-plugin-string";
 
 export default {
     input: "./src/server/index.js",

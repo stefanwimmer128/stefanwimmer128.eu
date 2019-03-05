@@ -1,3 +1,4 @@
+import prettyhtml from "@starptech/prettyhtml";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -147,8 +148,10 @@ const config = {
         new HtmlWebpackPlugin({
             template: HtmlWebpackTemplate,
             inject: false,
+            
             appMountId: "app",
-            title: "stefanwimmer128",
+            title: "stefanwimmer128", 
+            favicon: "assets/favicon.ico",
             meta: [
                 {
                     name: "viewport",
@@ -179,11 +182,7 @@ if (__devServer) {
     );
 } else {
     config.plugins.push(
-        new CleanWebpackPlugin("public", {
-            exclude: [
-                "favicon.ico",
-            ],
-        }),
+        new CleanWebpackPlugin(),
         new PrerenderSPAPlugin({
             staticDir: join(__dirname, "public"),
             routes: [
@@ -200,6 +199,12 @@ if (__devServer) {
                 headless: false,
                 devtools: true,
             }),
+            postProcess(context) {
+                context.html = prettyhtml(context.html, {
+                    tabWidth: 4,
+                }).toString();
+                return context;
+            },
         }),
     );
 }
