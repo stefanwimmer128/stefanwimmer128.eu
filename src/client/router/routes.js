@@ -1,22 +1,22 @@
 export default [
     {
         path: "/",
-        component: () => import("../pages/Home.vue"),
+        component: () => import(/* webpackChunkName: "Home" */ "../pages/Home.vue"),
     },
     {
         path: "/about",
-        component: () => import("../pages/About.vue"),
+        component: () => import(/* webpackChunkName: "About" */ "../pages/About.vue"),
     },
     {
         path: "/projects",
-        component: () => import("../pages/Projects.vue"),
+        component: () => import(/* webpackChunkName: "Projects" */ "../pages/Projects.vue"),
     },
     {
         path: "/blog",
-        component: () => import("../pages/Blog.vue"),
+        component: () => import(/* webpackChunkName: "Blog" */ "../pages/Blog.vue"),
     },
     {
         path: "*",
-        component: () => import("../pages/Error404.vue"),
+        component: () => import(/* webpackChunkName: "Error404" */ "../pages/Error404.vue"),
     },
 ];

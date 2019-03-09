@@ -4,8 +4,8 @@
   "scripts": {
     "dev-server": "webpack-dev-server --progress",
     "build:server": "rollup -c",
-    "build:client": "webpack-cli --progress",
-    "build": "rollup -c && webpack-cli --progress",
+    "build:client": "webpack --progress",
+    "build": "rollup -c && webpack --progress",
     "deploy": "firebase deploy"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "babel-loader": "8.0.5",
     "bootstrap": "4.3.1",
     "clean-webpack-plugin": "2.0.0",
-    "css-loader": "2.1.0",
+    "css-loader": "2.1.1",
     "element-theme-chalk": "2.6.1",
     "element-ui": "2.6.1",
     "extract-css-chunks-webpack-plugin": "4.0.0",
@@ -44,7 +44,7 @@
     "prerender-spa-plugin": "3.4.0",
     "pug": "2.0.3",
     "pug-plain-loader": "1.0.0",
-    "rollup": "1.4.1",
+    "rollup": "1.6.0",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-node-resolve": "4.0.1",
     "rollup-plugin-progress": "1.0.0",

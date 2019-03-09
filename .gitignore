@@ -4,6 +4,5 @@
 /functions/index.js*
 
 /public/
-!/public/favicon.ico
 
 *.log

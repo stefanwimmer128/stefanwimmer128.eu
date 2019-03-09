@@ -47,9 +47,7 @@ const proxy = [
 ];
 
 const config = {
-    entry: {
-        main: "./src/client/index.js"
-    },
+    entry: "./src/client/index.js",
     mode: __mode,
     devtool: "source-map",
     module: {
@@ -131,7 +129,7 @@ const config = {
     output: {
         path: join(__dirname, "public"),
         filename: `scripts/main.js${__hash}`,
-        chunkFilename: `scripts/chunk.[name].js${__hash}`,
+        chunkFilename: `scripts/[name].js${__hash}`,
         publicPath: "/",
     },
     plugins: [
@@ -142,7 +140,7 @@ const config = {
         new VueLoaderPlugin(),
         new ExtractCssChunksWebpackPlugin({
             filename: `styles/main.css${__hash}`,
-            chunkFilename: `styles/chunk.[name].css${__hash}`,
+            chunkFilename: `styles/[name].css${__hash}`,
             hot: __devServer,
         }),
         new HtmlWebpackPlugin({
@@ -162,8 +160,22 @@ const config = {
     ],
     optimization: {
         minimizer: [
-            new TerserWebpackPlugin(),
+            new TerserWebpackPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
         ],
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /node_modules/,
+                    chunks: "initial",
+                    name: "vendors",
+                    enforce: true,
+                },
+            },
+        },
     },
     devServer: {
         contentBase: join(__dirname, "public"),
