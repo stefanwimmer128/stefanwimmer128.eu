@@ -29,12 +29,9 @@ export default {
         }),
         babel({
             exclude: "node_modules/**",
-            plugins: [
-                "@babel/plugin-transform-runtime",
-            ],
             presets: [
                 [
-                    "@babel/preset-env",
+                    "@babel/env",
                     {
                         modules: false,
                         targets: {
@@ -42,6 +39,9 @@ export default {
                         },
                     },
                 ],
+            ],
+            plugins: [
+                "@babel/plugin-transform-runtime",
             ],
             runtimeHelpers: true,
         }),

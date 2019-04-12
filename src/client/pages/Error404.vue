@@ -1,5 +1,11 @@
-<script>
-    export default {};
+<script lang="ts">
+    import Vue from "vue";
+    import {
+        Component,
+    } from "vue-property-decorator";
+    
+    @Component
+    export default class Error404 extends Vue {}
 </script>
 
 <template lang="pug">

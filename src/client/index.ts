@@ -5,7 +5,11 @@ import "bootstrap";
 
 import "./main.scss";
 
-import app from "./main";
+import App from "./main";
+
+const app = new App({
+    el: "#app",
+});
 
 if (process.env.NODE_ENV === "development")
-    window.$app = app;
+    (<any>window).$app = app;

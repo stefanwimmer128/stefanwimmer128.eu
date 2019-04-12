@@ -1,5 +1,17 @@
-<script>
-    export default {};
+<script lang="ts">
+    import Vue from "vue";
+    import {
+        Component,
+    } from "vue-property-decorator";
+    import {
+        State,
+    } from "vuex-class";
+    
+    @Component
+    export default class App extends Vue {
+        @State("loading")
+        private loading!: boolean;
+    }
 </script>
 
 <template lang="pug">
@@ -14,5 +26,5 @@
                     router-link(to="/projects").nav-item.nav-link Projects
                     router-link(to="/blog").nav-item.nav-link Blog
                     a(href="https://github.com/stefanwimmer128").nav-item.nav-link GitHub
-        router-view(v-loading="$store.state.loading").p-2
+        router-view(v-loading="loading").p-2
 </template>

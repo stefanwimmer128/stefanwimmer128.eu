@@ -2,6 +2,9 @@ import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import Vue from "vue";
 import {
+    Component,
+} from "vue-property-decorator";
+import {
     sync,
 } from "vuex-router-sync";
 
@@ -9,7 +12,7 @@ import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo/provider";
 
-import app from "./components/app.vue";
+import App from "./components/App.vue";
 
 import {
     prerenderAfter,
@@ -21,26 +24,29 @@ Vue.use(ElementUI, {
 
 sync(store, router);
 
-export default new Vue({
-    el: "#app",
+@Component({
     router,
     store,
     apolloProvider,
+    
     components: {
-        app,
+        App,
     },
-    template: "<app />",
+    
+    template: "<app />"
+})
+export default class Main extends Vue {
     mounted() {
         this.$router.beforeEach((from, to, next) => {
             store.commit("loading", true);
             next();
         });
-        this.$router.afterEach((from, to, next) => {
+        this.$router.afterEach((from, to) => {
             store.commit("loading", false);
         });
         
         prerenderAfter.resolve().then(() =>
             document.dispatchEvent(new Event("prerender")),
         );
-    },
-});
+    }
+};

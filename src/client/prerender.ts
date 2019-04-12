@@ -1,8 +1,8 @@
-const _prerenderAfter = [];
+const _prerenderAfter: Promise<void>[] = [];
 
-export const PRERENDER = window.__PRERENDER_INJECTED;
+export const PRERENDER = (<any>window).__PRERENDER_INJECTED;
 
-export function prerenderAfter(name) {
+export function prerenderAfter() {
     let prerenderAfter;
     _prerenderAfter.push(new Promise(resolve =>
         prerenderAfter = resolve,

@@ -41,65 +41,67 @@ const proxy = [
         context: [
             "/graphql",
         ],
-        target: process.env.BACKEND == "remote" ? "https://www.stefanwimmer128.eu" : process.env.BACKEND || "https://0.0.0.0:5000",
+        target: "https://www.stefanwimmer128.eu",
         changeOrigin: true,
     },
 ];
 
 const config = {
-    entry: "./src/client/index.js",
+    entry: "./src/client/index.ts",
     mode: __mode,
     devtool: "source-map",
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(j|t)s$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 options: {
-                    plugins: [
-                        "@babel/plugin-syntax-dynamic-import",
-                        "@babel/plugin-transform-runtime",
-                    ],
                     presets: [
                         [
-                            "@babel/preset-env",
+                            "@babel/typescript",
+                            {
+                                allExtensions: true,
+                            },
+                        ],
+                        [
+                            "@babel/env",
                             {
                                 modules: false,
                                 useBuiltIns: "entry",
                             },
                         ],
                     ],
+                    plugins: [
+                        "@babel/syntax-dynamic-import",
+                        [
+                            "@babel/proposal-decorators",
+                            {
+                                legacy: true,
+                            },
+                        ],
+                        [
+                            "@babel/proposal-class-properties",
+                            {
+                                loose: true,
+                            },
+                        ],
+                        "@babel/proposal-object-rest-spread",
+                        "@babel/transform-runtime",
+                    ],
                 },
             },
             {
                 test: /\.scss$/,
-                oneOf: [
-                    {
-                        resourceQuery: /^\?vue/,
-                        loader: [
-                            ExtractCssChunksWebpackPlugin.loader,
-                            sourceMapLoader("css-loader", {
-                                importLoaders: 2,
-                            }),
-                            sourceMapLoader("postcss-loader"),
-                            sourceMapLoader("sass-loader", {
-                                outputStyle: "expanded",
-                            }),
-                        ],
-                    },
-                    {
-                        loader: [
-                            ExtractCssChunksWebpackPlugin.loader,
-                            sourceMapLoader("css-loader", {
-                                importLoaders: 2,
-                            }),
-                            sourceMapLoader("postcss-loader"),
-                            sourceMapLoader("sass-loader", {
-                                outputStyle: "expanded",
-                            }),
-                        ],
-                    },
+                loader: [
+                    ExtractCssChunksWebpackPlugin.loader,
+                    sourceMapLoader("css-loader", {
+                        importLoaders: 2,
+                    }),
+                    sourceMapLoader("postcss-loader"),
+                    sourceMapLoader("sass-loader", {
+                        outputStyle: "nexted",
+                    }),
                 ],
             },
             {
@@ -122,6 +124,10 @@ const config = {
         ],
     },
     resolve: {
+        extensions: [
+            ".js",
+            ".ts",
+        ],
         alias: {
             "vue$": "vue/dist/vue.esm.js",
         },
