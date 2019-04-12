@@ -8,7 +8,7 @@ export function prerenderAfter() {
         prerenderAfter = resolve,
     ));
     return prerenderAfter;
-};
+}
 
 prerenderAfter.resolve = function () {
     return Promise.all(_prerenderAfter);

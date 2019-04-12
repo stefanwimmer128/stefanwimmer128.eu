@@ -49,4 +49,4 @@ export default class Main extends Vue {
             document.dispatchEvent(new Event("prerender")),
         );
     }
-};
+}
