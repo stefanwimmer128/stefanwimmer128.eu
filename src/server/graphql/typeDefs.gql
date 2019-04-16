@@ -1,11 +1,16 @@
-type Blog {
+type BlogEntry {
     date: String!
     message: String!
     title: String!
 }
 
+type Blog {
+    count: Int!
+    nodes(offset: Int!, limit: Int!): [BlogEntry!]!
+}
+
 type Query {
-    blog(offset: Int!, limit: Int!): [Blog!]!
+    blog: Blog!
 }
 
 schema {

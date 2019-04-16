@@ -9,7 +9,7 @@
     "graphql": "14.2.1",
     "source-map-support": "0.5.12"
   },
-  "engine": {
+  "engines": {
     "node": "8"
   }
 }

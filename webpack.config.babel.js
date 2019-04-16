@@ -69,6 +69,7 @@ const config = {
                             {
                                 modules: false,
                                 useBuiltIns: "entry",
+                                corejs: 3,
                             },
                         ],
                     ],
@@ -87,7 +88,12 @@ const config = {
                             },
                         ],
                         "@babel/proposal-object-rest-spread",
-                        "@babel/transform-runtime",
+                        [
+                            "@babel/transform-runtime",
+                            {
+                                useESModules: false,
+                            },
+                        ],
                     ],
                 },
             },
@@ -100,7 +106,7 @@ const config = {
                     }),
                     sourceMapLoader("postcss-loader"),
                     sourceMapLoader("sass-loader", {
-                        outputStyle: "nexted",
+                        outputStyle: "nested",
                     }),
                 ],
             },

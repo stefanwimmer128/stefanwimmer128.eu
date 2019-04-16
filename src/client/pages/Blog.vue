@@ -1,6 +1,7 @@
 <script lang="ts">
     import gql from "graphql-tag";
     import moment from "moment";
+    import marked from "marked";
     import Vue from "vue";
     import {
         Component,
@@ -8,12 +9,24 @@
     
     @Component({
         apollo: {
-            blog: {
+            count: {
+                query: gql`query {
+                    blog {
+                        count
+                    }
+                }`,
+                update(data) {
+                    return data.blog.count;
+                },
+            },
+            nodes: {
                 query: gql`query($offset: Int!, $limit: Int!) {
-                    blog(offset: $offset, limit: $limit) {
-                        date
-                        message
-                        title
+                    blog {
+                        nodes(offset: $offset, limit: $limit) {
+                            date
+                            message
+                            title
+                        }
                     }
                 }`,
                 variables() {
@@ -22,22 +35,35 @@
                         limit: this.size,
                     };
                 },
+                update(data) {
+                    return data.blog.nodes;
+                },
             },
         },
     })
     export default class Blog extends Vue {
-        readonly moment = moment;
-        
-        private blog = [];
+        private count = 0;
+        private nodes = [];
         private page = 1;
         private size = 10;
         
         refresh() {
-            this.$apollo.queries.blog.refetch();
+            this.$apollo.queries.count.refetch();
+            this.$apollo.queries.nodes.refetch();
         }
         
         updateSize(size: number) {
             this.size = size;
+        }
+        
+        formatDate(date: string) {
+            return moment(date).format("llll");
+        }
+        
+        renderMarkdown(message: string) {
+            return marked(message.replace(/\\n/g, "\n"), {
+                sanitize: true,
+            });
         }
     }
 </script>
@@ -52,14 +78,14 @@
     div
         h1 Blog
         div(element-loading-text="Loading..." v-loading="$apollo.loading")
-            el-pagination(layout="sizes, prev, jumper, next, slot" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
+            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
-            div(:key="i" v-for="(entry, i) in blog").card
+            div(:key="i" v-for="(entry, i) in nodes").card
                 div.card-header
                     h4.card-title {{entry.title}}
-                    h6.card-subtitle.text-muted ({{moment(entry.date).format("llll")}})
-                div(:is="{ template: `<div>${entry.message}</div>` }").card-body.card-text
-            span(v-if="blog.length === 0").ml-5.text-muted No entries available!
-            el-pagination(layout="sizes, prev, jumper, next, slot" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
+                    h6.card-subtitle.text-muted ({{formatDate(entry.date)}})
+                div(v-html="renderMarkdown(entry.message)").card-body.card-text
+            span(v-if="count === 0").ml-5.text-muted No entries available!
+            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
 </template>

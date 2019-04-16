@@ -10,3 +10,5 @@ import {
 initializeApp(config().firebase);
 
 export * from "./graphql";
+
+export { default as blogCounter } from "./events/blogCounter";

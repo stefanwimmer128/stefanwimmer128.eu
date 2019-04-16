@@ -41,7 +41,12 @@ export default {
                 ],
             ],
             plugins: [
-                "@babel/plugin-transform-runtime",
+                [
+                    "@babel/transform-runtime",
+                    {
+                        useESModules: true,
+                    },
+                ],
             ],
             runtimeHelpers: true,
         }),
