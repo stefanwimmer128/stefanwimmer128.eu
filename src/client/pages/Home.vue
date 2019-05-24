@@ -4,7 +4,11 @@
         Component,
     } from "vue-property-decorator";
     
-    @Component
+    @Component({
+        metaInfo: {
+            title: "Home",
+        },
+    })
     export default class Home extends Vue {}
 </script>
 

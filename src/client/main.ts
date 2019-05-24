@@ -8,6 +8,8 @@ import {
     sync,
 } from "vuex-router-sync";
 
+import "./meta";
+
 import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo/provider";
@@ -24,7 +26,16 @@ Vue.use(ElementUI, {
 
 sync(store, router);
 
+const waitForVueMeta = prerenderAfter();
+
 @Component({
+    metaInfo: {
+        titleTemplate: "stefanimmer128 - %s",
+        title: "Home",
+        changed() {
+            waitForVueMeta();
+        },
+    },
     router,
     store,
     apolloProvider,
@@ -45,8 +56,6 @@ export default class Main extends Vue {
             store.commit("loading", false);
         });
         
-        prerenderAfter.resolve().then(() =>
-            document.dispatchEvent(new Event("prerender")),
-        );
+        prerenderAfter.resolve();
     }
 }

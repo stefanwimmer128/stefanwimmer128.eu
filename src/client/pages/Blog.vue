@@ -8,6 +8,9 @@
     } from "vue-property-decorator";
     
     @Component({
+        metaInfo: {
+            title: "Blog",
+        },
         apollo: {
             count: {
                 query: gql`query {

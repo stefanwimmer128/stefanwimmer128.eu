@@ -4,7 +4,11 @@
         Component,
     } from "vue-property-decorator";
     
-    @Component
+    @Component({
+        metaInfo: {
+            title: "Error 404 Not Found",
+        },
+    })
     export default class Error404 extends Vue {}
 </script>
 
