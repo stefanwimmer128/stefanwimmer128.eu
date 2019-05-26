@@ -4,11 +4,11 @@ import {
 
 export default {
     Blog: {
-        async count(root, args, context, info) {
+        async count(root: any, args: any, context: any, info: any) {
             return (await firestore().doc("blog/__count").get()).get("count");
         },
         
-        async nodes(root, args, context, info) {
+        async nodes(root: any, args: { offset: number; limit: number; }, context: any, info: any) {
             return (await firestore().collection("blog").orderBy("date", "desc").offset(args.offset).limit(args.limit).get()).docs.filter(doc =>
                     doc.id !== "__count",
                 ).map(doc =>
@@ -20,7 +20,7 @@ export default {
     },
     
     Query: {
-        blog(root, args, context, info) {
+        blog(root: any, args: any, context: any, info: any) {
             return {};
         },
     },

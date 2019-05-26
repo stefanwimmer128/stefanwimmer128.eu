@@ -4,6 +4,7 @@ import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackTemplate from "html-webpack-template";
 import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
+import MomentLocalesWebpackPlugin from "moment-locales-webpack-plugin";
 import {
     join,
 } from "path";
@@ -47,7 +48,7 @@ const proxy = [
 ];
 
 const config = {
-    entry: "./src/client/index.ts",
+    entry: "./src/index.ts",
     mode: __mode,
     devtool: "source-map",
     module: {
@@ -92,6 +93,7 @@ const config = {
                             "@babel/transform-runtime",
                             {
                                 useESModules: false,
+                                corejs: 3,
                             },
                         ],
                     ],
@@ -150,6 +152,7 @@ const config = {
             "process.env.NODE_ENV": JSON.stringify(__mode),
         }),
         new VueLoaderPlugin(),
+        new MomentLocalesWebpackPlugin(),
         new ExtractCssChunksWebpackPlugin({
             filename: `styles/main.css${__hash}`,
             chunkFilename: `styles/[name].css${__hash}`,
@@ -160,7 +163,7 @@ const config = {
             inject: false,
             
             appMountId: "app",
-            title: "stefanwimmer128", 
+            title: "stefanwimmer128",
             favicon: "assets/favicon.ico",
             meta: [
                 {

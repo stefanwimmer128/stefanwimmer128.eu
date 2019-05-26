@@ -1,6 +1,10 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "hosting": {
-    "public": "public",
+    "public": "packages/client/public",
     "rewrites": [
       {
         "source": "/graphql",
@@ -11,5 +15,8 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "source": "packages/server/build"
   }
 }

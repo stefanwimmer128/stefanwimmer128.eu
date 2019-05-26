@@ -1,8 +1,5 @@
-**/node_modules/
+/node_modules/
+
 /.firebase/
-
-/functions/index.js*
-
-/public/
 
 *.log

@@ -26,9 +26,9 @@
                 query: gql`query($offset: Int!, $limit: Int!) {
                     blog {
                         nodes(offset: $offset, limit: $limit) {
+                            title
                             date
                             message
-                            title
                         }
                     }
                 }`,
