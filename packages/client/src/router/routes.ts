@@ -10,6 +10,20 @@ export default [
     {
         path: "/projects",
         component: () => import(/* webpackChunkName: "Projects" */ "../pages/Projects.vue"),
+        children: [
+            {
+                path: "morefood2",
+                component: () => import(/* webpackChunkName: "MoreFood2" */ "../pages/Projects/MoreFood2.vue"),
+            },
+            {
+                path: "easystorage",
+                component: () => import(/* webpackChunkName: "EasyStorage" */ "../pages/Projects/EasyStorage.vue"),
+            },
+            {
+                path: "core",
+                component: () => import(/* webpackChunkName: "Core" */ "../pages/Projects/Core.vue"),
+            }
+        ],
     },
     {
         path: "/blog",

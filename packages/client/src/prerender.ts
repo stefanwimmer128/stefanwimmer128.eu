@@ -1,6 +1,6 @@
 const _prerenderAfter: Promise<void>[] = [];
 
-export const PRERENDER = (<any>window).__PRERENDER_INJECTED;
+export const PRERENDER = (<boolean> (<any>window).__PRERENDER_INJECTED);
 
 export function prerenderAfter(): () => void {
     let prerenderAfter: unknown;

@@ -25,6 +25,6 @@
                     router-link(to="/about").nav-item.nav-link About me
                     router-link(to="/projects").nav-item.nav-link Projects
                     router-link(to="/blog").nav-item.nav-link Blog
-                    a(href="https://github.com/stefanwimmer128").nav-item.nav-link GitHub
+                    a(href="https://github.com/stefanwimmer128" target="_blank").nav-item.nav-link GitHub
         router-view(v-loading="loading").p-2
 </template>

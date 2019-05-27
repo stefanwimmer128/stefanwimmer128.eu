@@ -1,4 +1,5 @@
 import prettyhtml from "@starptech/prettyhtml";
+import cheerio from "cheerio";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -42,7 +43,7 @@ const proxy = [
         context: [
             "/graphql",
         ],
-        target: "https://www.stefanwimmer128.eu",
+        target: process.env.BACKEND ? process.env.BACKEND : "https://www.stefanwimmer128.eu",
         changeOrigin: true,
     },
 ];
@@ -216,6 +217,9 @@ if (__devServer) {
                 "/",
                 "/about",
                 "/projects",
+                "/projects/morefood2",
+                "/projects/easystorage",
+                "/projects/core",
             ],
             server: {
                 proxy,
@@ -227,9 +231,14 @@ if (__devServer) {
                 devtools: true,
             }),
             postProcess(context) {
-                context.html = prettyhtml(context.html, {
+                const $ = cheerio.load(context.html);
+                
+                $("body > .v-modal").remove();
+                
+                context.html = prettyhtml($.html(), {
                     tabWidth: 4,
                 }).toString();
+                
                 return context;
             },
         }),
