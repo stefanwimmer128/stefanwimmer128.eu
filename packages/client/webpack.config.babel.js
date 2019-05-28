@@ -186,6 +186,14 @@ const config = {
             cacheGroups: {
                 vendors: {
                     test: /node_modules/,
+                    chunks: "async",
+                    name(module, chunk, cacheGroupKey) {
+                        return `${chunk[0].name}.vendors`;
+                    },
+                    enforce: true,
+                },
+                vendorsInitial: {
+                    test: /node_modules/,
                     chunks: "initial",
                     name: "vendors",
                     enforce: true,
@@ -233,6 +241,10 @@ if (__devServer) {
             postProcess(context) {
                 const $ = cheerio.load(context.html);
                 
+                $("head script").remove();
+                $("head link[rel=stylesheet]:not([href*=main])").remove();
+                
+                $("body").removeAttr("class");
                 $("body > .v-modal").remove();
                 
                 context.html = prettyhtml($.html(), {

@@ -13,15 +13,15 @@ export default [
         children: [
             {
                 path: "morefood2",
-                component: () => import(/* webpackChunkName: "MoreFood2" */ "../pages/Projects/MoreFood2.vue"),
+                component: () => import(/* webpackChunkName: "Projects/MoreFood2" */ "../pages/Projects/MoreFood2.vue"),
             },
             {
                 path: "easystorage",
-                component: () => import(/* webpackChunkName: "EasyStorage" */ "../pages/Projects/EasyStorage.vue"),
+                component: () => import(/* webpackChunkName: "Projects/EasyStorage" */ "../pages/Projects/EasyStorage.vue"),
             },
             {
                 path: "core",
-                component: () => import(/* webpackChunkName: "Core" */ "../pages/Projects/Core.vue"),
+                component: () => import(/* webpackChunkName: "Projects/Core" */ "../pages/Projects/Core.vue"),
             }
         ],
     },

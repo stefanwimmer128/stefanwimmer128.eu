@@ -3,7 +3,8 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
-    "build": "webpack-cli --progress"
+    "build": "webpack-cli --progress",
+    "dev-server": "webpack-dev-server --progress"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
