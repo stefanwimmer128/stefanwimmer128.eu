@@ -48,6 +48,22 @@ const proxy = [
     },
 ];
 
+let htmlSettings = (filename = "index.html") => ({
+    filename,
+    template: HtmlWebpackTemplate,
+    inject: false,
+    
+    appMountId: "app",
+    title: "stefanwimmer128",
+    favicon: "assets/favicon.ico",
+    meta: [
+        {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1, shrink-to-fit=no",
+        },
+    ],
+});
+
 const config = {
     entry: "./src/index.ts",
     mode: __mode,
@@ -159,20 +175,7 @@ const config = {
             chunkFilename: `styles/[name].css${__hash}`,
             hot: __devServer,
         }),
-        new HtmlWebpackPlugin({
-            template: HtmlWebpackTemplate,
-            inject: false,
-            
-            appMountId: "app",
-            title: "stefanwimmer128",
-            favicon: "assets/favicon.ico",
-            meta: [
-                {
-                    name: "viewport",
-                    content: "width=device-width, initial-scale=1, shrink-to-fit=no",
-                },
-            ],
-        }),
+        new HtmlWebpackPlugin(htmlSettings()),
     ],
     optimization: {
         minimizer: [
@@ -203,7 +206,7 @@ const config = {
     },
     devServer: {
         contentBase: join(__dirname, "public"),
-        historyApiFallback: true,
+        historyApiFallback: "index.html",
         hot: true,
         host: "0.0.0.0",
         disableHostCheck: true,
@@ -219,6 +222,7 @@ if (__devServer) {
 } else {
     config.plugins.push(
         new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin(htmlSettings("__index.html")),
         new PrerenderSPAPlugin({
             staticDir: join(__dirname, "public"),
             routes: [
@@ -240,9 +244,6 @@ if (__devServer) {
             }),
             postProcess(context) {
                 const $ = cheerio.load(context.html);
-                
-                $("head script").remove();
-                $("head link[rel=stylesheet]:not([href*=main])").remove();
                 
                 $("body").removeAttr("class");
                 $("body > .v-modal").remove();
