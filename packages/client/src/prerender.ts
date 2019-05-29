@@ -1,13 +1,13 @@
 const _prerenderAfter: Promise<void>[] = [];
 
-export const PRERENDER = (<boolean> (<any>window).__PRERENDER_INJECTED);
+export const PRERENDER = (window as any).__PRERENDER_INJECTED as boolean;
 
 export function prerenderAfter(): () => void {
     let prerenderAfter: unknown;
     _prerenderAfter.push(new Promise(resolve =>
         prerenderAfter = resolve,
     ));
-    return (<() => void>prerenderAfter);
+    return prerenderAfter as () => void;
 }
 
 prerenderAfter.resolve = function () {

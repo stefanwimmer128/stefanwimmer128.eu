@@ -3,9 +3,7 @@
     import moment from "moment";
     import marked from "marked";
     import Vue from "vue";
-    import {
-        Component,
-    } from "vue-property-decorator";
+    import Component from "vue-class-component";
     
     @Component({
         metaInfo: {

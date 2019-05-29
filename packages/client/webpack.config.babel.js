@@ -71,7 +71,7 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(j|t)s$/,
+                test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 options: {
@@ -80,6 +80,7 @@ const config = {
                             "@babel/typescript",
                             {
                                 allExtensions: true,
+                                isTSX: true,
                             },
                         ],
                         [
@@ -113,6 +114,7 @@ const config = {
                                 corejs: 3,
                             },
                         ],
+                        "transform-vue-jsx",
                     ],
                 },
             },
@@ -152,6 +154,8 @@ const config = {
         extensions: [
             ".js",
             ".ts",
+            ".jsx",
+            ".tsx",
         ],
         alias: {
             "vue$": "vue/dist/vue.esm.js",

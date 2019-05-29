@@ -32,6 +32,8 @@ export default {
             extensions: [
                 ".js",
                 ".ts",
+                ".jsx",
+                ".tsx",
             ],
             presets: [
                 "@babel/typescript",
