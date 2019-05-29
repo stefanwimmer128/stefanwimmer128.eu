@@ -1,6 +1,5 @@
 import {
     ApolloServer,
-    gql,
 } from "apollo-server-express";
 import express from "express";
 import {
@@ -10,19 +9,18 @@ import {
 import typeDefs from "./typeDefs.gql";
 import resolvers from "./resolvers";
 
-const app = express();
-
-const server = new ApolloServer({
-    typeDefs: gql(typeDefs),
-    resolvers,
+export const graphql = https.onRequest((app => {
+    new ApolloServer({
+        typeDefs,
+        resolvers,
+        
+        playground: true,
+        introspection: true,
+    }).applyMiddleware({
+        app,
+        
+        cors: true,
+    });
     
-    playground: true,
-    introspection: true,
-});
-
-server.applyMiddleware({
-    app,
-    cors: true,
-});
-
-export const graphql = https.onRequest(app);
+    return app;
+})(express()));

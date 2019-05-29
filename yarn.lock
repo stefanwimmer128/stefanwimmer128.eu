@@ -861,6 +861,14 @@
     lodash.camelcase "^4.3.0"
     protobufjs "^6.8.6"
 
+"@kocal/rollup-plugin-graphql@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kocal/rollup-plugin-graphql/-/rollup-plugin-graphql-1.0.0.tgz#80132fc27abe9dd77125786e747b6e2eb8af2c6e"
+  integrity sha512-kfj4iWKGE08P7Pe3ysXV7ASH+x6HuBJoOgkxB2bXXlrNAQmMfhWhUbfVX+FeCfHw5hNz1feH1lqf6AqcQmdTxA==
+  dependencies:
+    graphql-tag "^2.2.2"
+    rollup-pluginutils "^2.0.1"
+
 "@lerna/add@3.14.0":
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.14.0.tgz#799d416e67d48c285967abf883be746557aefa48"
@@ -6315,7 +6323,7 @@ graphql-subscriptions@^1.0.0:
   dependencies:
     iterall "^1.2.1"
 
-graphql-tag@2.10.1, graphql-tag@^2.4.2, graphql-tag@^2.9.2:
+graphql-tag@2.10.1, graphql-tag@^2.2.2, graphql-tag@^2.4.2, graphql-tag@^2.9.2:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha512-jApXqWBzNXQ8jYa/HLkZJaVw9jgwNqZkywa2zfFn16Iv1Zb7ELNHkJaXHR7Quvd5SIGsy6Ny7SUKATgnu05uEg==
@@ -11048,14 +11056,7 @@ rollup-plugin-progress@1.1.1:
   dependencies:
     chalk "^2.4.2"
 
-rollup-plugin-string@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-string/-/rollup-plugin-string-3.0.0.tgz#fed2d6301fae1e59eb610957df757ef13fada3f0"
-  integrity sha512-vqyzgn9QefAgeKi+Y4A7jETeIAU1zQmS6VotH6bzm/zmUQEnYkpIGRaOBPY41oiWYV4JyBoGAaBjYMYuv+6wVw==
-  dependencies:
-    rollup-pluginutils "^2.4.1"
-
-rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.4.1, rollup-pluginutils@^2.7.0:
+rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.7.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.7.1.tgz#a7915ce8b12c177364784bf38a1590cc6c2c8250"
   integrity sha512-3nRf3buQGR9qz/IsSzhZAJyoK663kzseps8itkYHr+Z7ESuaffEPfgRinxbCRA0pf0gzLqkNKkSb8aNVTq75NA==

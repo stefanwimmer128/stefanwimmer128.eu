@@ -1,4 +1,9 @@
 declare module "*.gql" {
-    const gql: string;
+    import {
+        DocumentNode,
+    } from "graphql";
+    
+    const gql: DocumentNode | DocumentNode[];
+    
     export default gql;
 }

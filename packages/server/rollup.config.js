@@ -1,3 +1,4 @@
+import graphql from "@kocal/rollup-plugin-graphql";
 import external from "@yelo/rollup-node-external";
 import {
     join,
@@ -6,9 +7,6 @@ import babel from "rollup-plugin-babel";
 import generatePackageJson from "rollup-plugin-generate-package-json";
 import progress from "rollup-plugin-progress";
 import resolve from "rollup-plugin-node-resolve";
-import {
-    string,
-} from "rollup-plugin-string";
 
 import {
     devDependencies,
@@ -29,9 +27,7 @@ export default {
                 ".ts",
             ],
         }),
-        string({
-            include: "**/*.gql",
-        }),
+        graphql(),
         babel({
             extensions: [
                 ".js",

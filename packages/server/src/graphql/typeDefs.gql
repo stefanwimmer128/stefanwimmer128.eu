@@ -4,9 +4,14 @@ type BlogEntry {
     title: String!
 }
 
+enum Order {
+    desc
+    asc
+}
+
 type Blog {
     count: Int!
-    nodes(offset: Int!, limit: Int!): [BlogEntry!]!
+    nodes(offset: Int!, limit: Int!, order: Order): [BlogEntry!]!
 }
 
 type Query {
