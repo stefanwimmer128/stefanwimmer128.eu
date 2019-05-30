@@ -1,5 +1,3 @@
-declare module "element-ui/lib/locale/lang/en"
-
 declare module "*.vue" {
     import Vue from "vue";
     
