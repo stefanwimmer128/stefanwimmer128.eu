@@ -8,6 +8,8 @@
         },
     })
     export default class Projects extends Vue {
+        private visible: boolean = true;
+        
         back() {
             this.$router.push("/projects");
         }
@@ -15,7 +17,7 @@
 </script>
 
 <template lang="pug">
-    el-dialog(:visible="true" title="MoreFood 2" :before-close="back")
+    el-dialog(:visible.sync="visible" title="MoreFood 2" @closed="back")
         p Bringing the next logical step from vanilla food. More food-items and a new crop on top.
         p More information can be found 
             a(href="https://minecraft.curseforge.com/projects/morefood2" target="_blank") here
