@@ -1,7 +1,6 @@
 import prettyhtml from "@starptech/prettyhtml";
 import cheerio from "cheerio";
 import CleanWebpackPlugin from "clean-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
 import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -181,14 +180,6 @@ const config = {
             hot: __devServer,
         }),
         new HtmlWebpackPlugin(htmlSettings()),
-        new CopyWebpackPlugin([
-            {
-                from: "assets",
-                ignore: [
-                    "favicon.ico",
-                ],
-            },
-        ]),
     ],
     optimization: {
         minimizer: [
@@ -252,8 +243,8 @@ if (__devServer) {
             renderer: new PuppeteerRenderer({
                 inject: true,
                 renderAfterDocumentEvent: "prerender",
-                headless: !!process.env.HEADLESS,
-                devtools: !process.env.HEADLESS,
+                headless: false,
+                devtools: true,
             }),
             postProcess(context) {
                 const $ = cheerio.load(context.html);
