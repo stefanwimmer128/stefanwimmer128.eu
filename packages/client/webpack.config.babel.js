@@ -1,10 +1,10 @@
 import prettyhtml from "@starptech/prettyhtml";
 import cheerio from "cheerio";
 import CleanWebpackPlugin from "clean-webpack-plugin";
+import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackTemplate from "html-webpack-template";
-import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
 import MomentLocalesWebpackPlugin from "moment-locales-webpack-plugin";
 import {
     join,
@@ -210,7 +210,7 @@ const config = {
     },
     devServer: {
         contentBase: join(__dirname, "public"),
-        historyApiFallback: "index.html",
+        historyApiFallback: true,
         hot: true,
         host: "0.0.0.0",
         disableHostCheck: true,
