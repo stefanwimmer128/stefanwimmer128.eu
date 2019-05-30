@@ -1,23 +1,21 @@
 <script lang="ts">
     import Vue from "vue";
-    import Component from "vue-class-component";
+    import {
+        Component,
+    } from "vue-property-decorator";
+    
+    import Project from "../../components/Project.vue";
     
     @Component({
-        metaInfo: {
-            title: "EasyStorage",
+        components: {
+            Project,
         },
     })
-    export default class Projects extends Vue {
-        private visible: boolean = true;
-        
-        back() {
-            this.$router.push("/projects");
-        }
-    }
+    export default class EasyStorage extends Vue {}
 </script>
 
 <template lang="pug">
-    el-dialog(:visible.sync="visible" title="EasyStorage" @closed="back")
+    project(title="EasyStorage")
         p Easily store and load serializable objects, List's and Map's.
         p Read documentation 
             a(href="https://stefanwimmer128.github.io/easystorage" target="_blank") here

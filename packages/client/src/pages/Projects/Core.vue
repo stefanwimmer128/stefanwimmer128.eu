@@ -1,23 +1,21 @@
 <script lang="ts">
     import Vue from "vue";
-    import Component from "vue-class-component";
+    import {
+        Component,
+    } from "vue-property-decorator";
+    
+    import Project from "../../components/Project.vue";
     
     @Component({
-        metaInfo: {
-            title: "@stefanwimmer128/core",
+        components: {
+            Project,
         },
     })
-    export default class Projects extends Vue {
-        private visible: boolean = true;
-        
-        back() {
-            this.$router.push("/projects");
-        }
-    }
+    export default class Core extends Vue {}
 </script>
 
 <template lang="pug">
-    el-dialog(:visible.sync="visible" title="@stefanwimmer128/core" @closed="back")
+    project(title="@stefanwimmer128/core")
         p Complex features made easy
         p Read documentation 
             a(href="https://stefanwimmer128.github.io/core" target="_blank") here

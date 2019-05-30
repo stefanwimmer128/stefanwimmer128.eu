@@ -1,10 +1,12 @@
 import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import Vue from "vue";
-import Component from "vue-class-component";
 import {
     Mutation,
 } from "vuex-class";
+import {
+    Component,
+} from "vue-property-decorator";
 import {
     sync,
 } from "vuex-router-sync";
