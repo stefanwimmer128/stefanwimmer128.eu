@@ -91,6 +91,7 @@ const config = {
                                 corejs: 3,
                             },
                         ],
+                        "@vue/jsx",
                     ],
                     plugins: [
                         "@babel/syntax-dynamic-import",
@@ -114,7 +115,6 @@ const config = {
                                 corejs: 3,
                             },
                         ],
-                        "transform-vue-jsx",
                     ],
                 },
             },
