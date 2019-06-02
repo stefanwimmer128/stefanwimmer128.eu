@@ -1,7 +1,7 @@
 import Vue from "vue";
 import {
     Component,
-} from "vue-property-decorator";
+} from "@vue-decorators/all";
 
 @Component
 export default class IsMobile extends Vue {

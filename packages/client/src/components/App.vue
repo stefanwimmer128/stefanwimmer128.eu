@@ -2,15 +2,13 @@
     import Vue from "vue";
     import {
         Component,
-    } from "vue-property-decorator";
-    import {
         State,
-    } from "vuex-class";
+    } from "@vue-decorators/all";
     
     @Component
     export default class App extends Vue {
         @State("loading")
-        private loading!: boolean;
+        readonly loading!: boolean;
     }
 </script>
 

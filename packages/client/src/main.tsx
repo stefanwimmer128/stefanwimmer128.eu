@@ -2,11 +2,9 @@ import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import Vue from "vue";
 import {
-    Mutation,
-} from "vuex-class";
-import {
     Component,
-} from "vue-property-decorator";
+    Mutation,
+} from "@vue-decorators/all";
 import {
     sync,
 } from "vuex-router-sync";
@@ -45,7 +43,7 @@ const waitForVueMeta = prerenderAfter();
 })
 export default class Main extends Vue {
     @Mutation("loading")
-    private loading!: (value: boolean) => void
+    readonly loading!: (value: boolean) => void
     
     mounted() {
         this.$router.beforeEach((from, to, next) => {

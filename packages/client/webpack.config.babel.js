@@ -1,6 +1,8 @@
 import prettyhtml from "@starptech/prettyhtml";
 import cheerio from "cheerio";
-import CleanWebpackPlugin from "clean-webpack-plugin";
+import {
+    CleanWebpackPlugin,
+} from "clean-webpack-plugin";
 import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -73,50 +75,56 @@ const config = {
             {
                 test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
-                options: {
-                    presets: [
-                        [
-                            "@babel/typescript",
-                            {
-                                allExtensions: true,
-                                isTSX: true,
-                            },
-                        ],
-                        [
-                            "@babel/env",
-                            {
-                                modules: false,
-                                useBuiltIns: "entry",
-                                corejs: 3,
-                            },
-                        ],
-                        "@vue/jsx",
-                    ],
-                    plugins: [
-                        "@babel/syntax-dynamic-import",
-                        [
-                            "@babel/proposal-decorators",
-                            {
-                                legacy: true,
-                            },
-                        ],
-                        [
-                            "@babel/proposal-class-properties",
-                            {
-                                loose: true,
-                            },
-                        ],
-                        "@babel/proposal-object-rest-spread",
-                        [
-                            "@babel/transform-runtime",
-                            {
-                                useESModules: false,
-                                corejs: 3,
-                            },
-                        ],
-                    ],
-                },
+                loaders: [
+                    "source-map-loader",
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                [
+                                    "@babel/typescript",
+                                    {
+                                        allExtensions: true,
+                                        isTSX: true,
+                                    },
+                                ],
+                                [
+                                    "@babel/env",
+                                    {
+                                        modules: false,
+                                        useBuiltIns: "entry",
+                                        corejs: 3,
+                                    },
+                                ],
+                                "@vue/jsx",
+                            ],
+                            plugins: [
+                                "@babel/syntax-dynamic-import",
+                                "transform-typescript-metadata",
+                                [
+                                    "@babel/proposal-decorators",
+                                    {
+                                        legacy: true,
+                                    },
+                                ],
+                                [
+                                    "@babel/proposal-class-properties",
+                                    {
+                                        loose: true,
+                                    },
+                                ],
+                                "@babel/proposal-object-rest-spread",
+                                [
+                                    "@babel/transform-runtime",
+                                    {
+                                        useESModules: false,
+                                        corejs: 3,
+                                    },
+                                ],
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.scss$/,

@@ -5,50 +5,51 @@
     import Vue from "vue";
     import {
         Component,
-    } from "vue-property-decorator";
+        SmartQuery,
+    } from "@vue-decorators/all";
     
     @Component({
         metaInfo: {
             title: "Blog",
         },
-        apollo: {
-            count: {
-                query: gql`query {
-                    blog {
-                        count
-                    }
-                }`,
-                update(data) {
-                    return data.blog.count;
-                },
-            },
-            nodes: {
-                query: gql`query($offset: Int!, $limit: Int!) {
-                    blog {
-                        nodes(offset: $offset, limit: $limit) {
-                            title
-                            date
-                            message
-                        }
-                    }
-                }`,
-                variables() {
-                    return {
-                        offset: (this.page - 1) * this.size,
-                        limit: this.size,
-                    };
-                },
-                update(data) {
-                    return data.blog.nodes;
-                },
-            },
-        },
     })
     export default class Blog extends Vue {
-        private count = 0;
-        private nodes = [];
-        private page = 1;
-        private size = 10;
+        @SmartQuery<Blog>({
+            query: gql`query {
+                blog {
+                    count
+                }
+            }`,
+            update(data) {
+                return data.blog.count;
+            },
+        })
+        readonly count = 0;
+        
+        @SmartQuery<Blog>({
+            query: gql`query($offset: Int!, $limit: Int!) {
+                blog {
+                    nodes(offset: $offset, limit: $limit) {
+                        title
+                        date
+                        message
+                    }
+                }
+            }`,
+            variables() {
+                return {
+                    offset: (this.page - 1) * this.size,
+                    limit: this.size,
+                };
+            },
+            update(data) {
+                return data.blog.nodes;
+            },
+        })
+        readonly nodes = [];
+        
+        page = 1;
+        size = 10;
         
         refresh() {
             this.$apollo.queries.count.refetch();

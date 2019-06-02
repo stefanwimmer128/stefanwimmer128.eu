@@ -3,7 +3,7 @@
         Component,
         Mixins,
         Prop,
-    } from "vue-property-decorator";
+    } from "@vue-decorators/all";
     
     import IsMobile from "../mixins/IsMobile";
     
@@ -16,12 +16,11 @@
     })
     export default class Project extends Mixins(IsMobile) {
         @Prop({
-            type: String,
             required: true,
         })
-        private title!: string;
+        readonly title!: string;
         
-        private visible: boolean = true;
+        visible: boolean = true;
         
         back() {
             this.$router.push("/projects");

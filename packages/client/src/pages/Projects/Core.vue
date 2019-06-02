@@ -2,7 +2,7 @@
     import Vue from "vue";
     import {
         Component,
-    } from "vue-property-decorator";
+    } from "@vue-decorators/all";
     
     import Project from "../../components/Project.vue";
     
