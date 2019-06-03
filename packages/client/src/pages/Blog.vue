@@ -8,13 +8,34 @@
         SmartQuery,
     } from "@vue-decorators/all";
     
+    type BlogCountResult = {
+        blog: {
+            count: number;
+        };
+    };
+    
+    type BlogNode = {
+        title: string;
+        date: string;
+        message: string;
+    };
+    type BlogNodesResult = {
+        blog: {
+            nodes: BlogNode[];
+        };
+    };
+    type BlogNodesVariables = {
+        offset: number;
+        limit: number;
+    };
+    
     @Component({
         metaInfo: {
             title: "Blog",
         },
     })
     export default class Blog extends Vue {
-        @SmartQuery<Blog>({
+        @SmartQuery<Blog, number, BlogCountResult>({
             query: gql`query {
                 blog {
                     count
@@ -26,7 +47,7 @@
         })
         readonly count = 0;
         
-        @SmartQuery<Blog>({
+        @SmartQuery<Blog, BlogNode[], BlogNodesResult, BlogNodesVariables>({
             query: gql`query($offset: Int!, $limit: Int!) {
                 blog {
                     nodes(offset: $offset, limit: $limit) {
