@@ -45,7 +45,7 @@ const proxy = [
         context: [
             "/graphql",
         ],
-        target: process.env.BACKEND ? process.env.BACKEND === "remote" ? "https://www.stefanwimmer128.eu" : process.env.BACKEND : "http://0.0.0.0:5000/graphql",
+        target: process.env.BACKEND ? process.env.BACKEND === "remote" ? "https://www.stefanwimmer128.eu" : process.env.BACKEND : __devServer ? "http://0.0.0.0:5000" : "https://www.stefanwimmer128.eu",
         changeOrigin: true,
     },
 ];
