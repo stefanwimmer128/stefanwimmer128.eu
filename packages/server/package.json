@@ -18,7 +18,7 @@
     "@yelo/rollup-node-external": "1.0.1",
     "firebase-functions-test": "0.1.6",
     "grpc": "1.21.1",
-    "rollup": "1.14.3",
+    "rollup": "1.15.0",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-generate-package-json": "3.1.2",
     "rollup-plugin-node-resolve": "5.0.1",

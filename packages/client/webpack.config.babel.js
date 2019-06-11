@@ -174,6 +174,9 @@ const config = {
         filename: `scripts/main.js${__hash}`,
         chunkFilename: `scripts/[name].js${__hash}`,
         publicPath: "/",
+        
+        library: __mode === "development" ? "$vm" : void 0,
+        libraryExport: "default",
     },
     plugins: [
         new FriendlyErrorsWebpackPlugin(),
@@ -203,14 +206,14 @@ const config = {
                     test: /node_modules/,
                     chunks: "async",
                     name(module, chunk, cacheGroupKey) {
-                        return `${chunk[0].name}.vendors`;
+                        return `vendors/${chunk.map(x => x.name.replace(/\//g, ".")).join("~")}`;
                     },
                     enforce: true,
                 },
                 vendorsInitial: {
                     test: /node_modules/,
                     chunks: "initial",
-                    name: "vendors",
+                    name: "vendors/main",
                     enforce: true,
                 },
             },
