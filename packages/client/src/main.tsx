@@ -1,5 +1,6 @@
 import {
     Component,
+    Callable,
     Mutation,
 } from "@vue-decorators/all";
 import ElementUI from "element-ui";
@@ -17,10 +18,6 @@ import "./meta";
 import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo/provider";
-
-import {
-    Action1,
-} from "./store/types";
 
 import * as History from "./store/history";
 
@@ -52,10 +49,10 @@ const waitForVueMeta = prerenderAfter();
 })
 export default class Main extends Vue {
     @Mutation("loading")
-    readonly loading!: Action1<boolean>;
+    readonly loading!: Callable<boolean>;
     
     @History.Action("push")
-    readonly push!: Action1<Route>;
+    readonly push!: Callable<Route>;
     
     mounted() {
         this.$router.beforeEach((to, from, next) => {

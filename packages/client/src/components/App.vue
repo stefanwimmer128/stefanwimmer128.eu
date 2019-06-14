@@ -2,12 +2,9 @@
     import Vue from "vue";
     import {
         Component,
+        Callable,
         State,
     } from "@vue-decorators/all";
-    
-    import {
-        Action1,
-    } from "../store/types";
     
     import * as History from "../store/history";
     
@@ -23,7 +20,7 @@
         readonly hasNext!: boolean;
         
         @History.Action("go")
-        readonly go!: Action1<number>;
+        readonly go!: Callable<number>;
     }
 </script>
 

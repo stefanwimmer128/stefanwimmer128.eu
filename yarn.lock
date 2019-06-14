@@ -2179,32 +2179,32 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@vue-decorators/all@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/all/-/all-1.4.4.tgz#5e923dcdb47318e1d2ce82620a0f86fc37a683d1"
-  integrity sha512-l+IR6HuD/XACzZMPnp3Bkrii4/h6z2E3WV0JtlAxesiP5bebK/jVAcH3G9Au8FGYzl6d60F48YwFJakvXQvUrg==
+"@vue-decorators/all@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/all/-/all-1.5.0.tgz#249fbac345b1804aab6c4aec9d71522325be894a"
+  integrity sha512-2vvRRq605R2jTkhL6BvLJ9LfwUK1WcjMmini2MPKwHz3zqe0Tvn7hHaYgu4GEt88/ccU1vjrn+9xa3dxdihL7g==
   dependencies:
-    "@vue-decorators/apollo" "^1.4.4"
-    "@vue-decorators/types" "^1.4.4"
+    "@vue-decorators/apollo" "^1.5.0"
+    "@vue-decorators/types" "^1.5.0"
     vue-class-component "^7.1.0"
     vue-property-decorator "^8.1.1"
     vuex-class "^0.3.2"
 
-"@vue-decorators/apollo@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/apollo/-/apollo-1.4.4.tgz#37a6734a7ec38abee1bdb7cb2e0a8f7acbcba910"
-  integrity sha512-r/nR4iUM2Pl79TCMx8XVnhpAZjmTuwPQ9uXIt5wnhnIhaJ3iwT+f0fkHZemsVPSuNGa2u7YjyHXiJ04+gpYMxg==
+"@vue-decorators/apollo@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/apollo/-/apollo-1.5.0.tgz#fb31f894f7ee9a780dc7f0a98dcdf36c574a7913"
+  integrity sha512-DU2g+gEunN5qO2SITKuTXkXzHfBbgK8KxY1mWkMHAsJplKtGYqkATia4klX0IvHMsXCa1V1/+gozGIeWGUC13A==
   dependencies:
     "@types/graphql" "^14.2.0"
-    "@vue-decorators/types" "^1.4.4"
+    "@vue-decorators/types" "^1.5.0"
     graphql "^14.3.1"
     vue-apollo "^3.0.0-beta.30"
     vue-class-component "^7.1.0"
 
-"@vue-decorators/types@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/types/-/types-1.4.4.tgz#72c8f37fac0cffd5ac331c7e7012c11bd1a670e0"
-  integrity sha512-tJ10vc/40jueGjlDgXrNZDzYhRsir/BOQYb3ZsrQovikoxRQJz7QCz63pVjp2u484a0t9N61rl1hwreCFMuqIg==
+"@vue-decorators/types@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/types/-/types-1.5.0.tgz#688aa88b7cd130829a8725aa346481c61241cb8f"
+  integrity sha512-hdzVpv87eCNn4rOq9YvOTaHvYwu5R+yioBCzJPBn0X+RrZOGuGrt/Sq46fPb9ulK5lXEg+H3CUoxexvjU3f0YA==
 
 "@vue/babel-helper-vue-jsx-merge-props@1.0.0", "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
