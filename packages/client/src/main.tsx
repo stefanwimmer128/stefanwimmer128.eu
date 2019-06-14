@@ -1,10 +1,13 @@
-import ElementUI from "element-ui";
-import locale from "element-ui/lib/locale/lang/en";
-import Vue from "vue";
 import {
     Component,
     Mutation,
 } from "@vue-decorators/all";
+import ElementUI from "element-ui";
+import locale from "element-ui/lib/locale/lang/en";
+import Vue from "vue";
+import {
+    Route,
+} from "vue-router";
 import {
     sync,
 } from "vuex-router-sync";
@@ -14,6 +17,12 @@ import "./meta";
 import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo/provider";
+
+import {
+    Action1,
+} from "./store/types";
+
+import * as History from "./store/history";
 
 import App from "./components/App.vue";
 
@@ -43,16 +52,21 @@ const waitForVueMeta = prerenderAfter();
 })
 export default class Main extends Vue {
     @Mutation("loading")
-    readonly loading!: (value: boolean) => void
+    readonly loading!: Action1<boolean>;
+    
+    @History.Action("push")
+    readonly push!: Action1<Route>;
     
     mounted() {
-        this.$router.beforeEach((from, to, next) => {
+        this.$router.beforeEach((to, from, next) => {
             this.loading(true);
             
             next();
         });
-        this.$router.afterEach((from, to) => {
+        this.$router.afterEach((to, from) => {
             this.loading(false);
+            
+            this.push(to);
         });
         
         prerenderAfter.resolve();

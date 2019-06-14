@@ -5,17 +5,35 @@
         State,
     } from "@vue-decorators/all";
     
+    import {
+        Action1,
+    } from "../store/types";
+    
+    import * as History from "../store/history";
+    
     @Component
     export default class App extends Vue {
         @State("loading")
         readonly loading!: boolean;
+        
+        @History.Getter("hasBefore")
+        readonly hasBefore!: boolean;
+        
+        @History.Getter("hasNext")
+        readonly hasNext!: boolean;
+        
+        @History.Action("go")
+        readonly go!: Action1<number>;
     }
 </script>
 
 <template lang="pug">
     div#app.h-100
         div.bg-dark.navbar.navbar-dark.navbar-expand-md.sticky-top
-            router-link.navbar-brand(to="/") stefanwimmer128
+            el-button-group.navbar-brand
+                el-button(v-if="hasBefore" type="text" icon="el-icon-arrow-left" @click="go(-1)")
+                el-button(type="text" @click="$router.push('/')") stefanwimmer128
+                el-button(v-if="hasNext" type="text" icon="el-icon-arrow-right" @click="go(1)")
             button.navbar-toggler(data-target="#navbar" data-toggle="collapse")
                 span.navbar-toggler-icon
             div.collapse.navbar-collapse#navbar
