@@ -76,7 +76,6 @@ const config = {
                 test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
                 loaders: [
-                    "source-map-loader",
                     {
                         loader: "babel-loader",
                         options: {

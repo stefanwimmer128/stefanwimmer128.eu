@@ -1,15 +1,25 @@
 <script lang="ts">
-    import Vue from "vue";
     import {
         Component,
+        Mixins,
     } from "@vue-decorators/all";
+    
+    import IsMobile from "../mixins/IsMobile";
     
     @Component({
         metaInfo: {
             title: "Projects",
         },
     })
-    export default class Projects extends Vue {}
+    export default class Projects extends Mixins(IsMobile) {
+        get type() {
+            return this.isMobile ? void 0 : "card";
+        }
+        
+        get direction() {
+            return this.isMobile ? "vertical" : "horizontal";
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -21,7 +31,7 @@
 <template lang="pug">
     div
         h1 Projects
-        el-carousel(type="card" :autoplay="false")
+        el-carousel(:type="type" :autoplay="8e3" :direction="direction")
             el-carousel-item
                 el-card(shadow="hover").bg-light.text-dark.card
                     h3(slot="header") MoreFood 2
