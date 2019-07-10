@@ -9,6 +9,12 @@ import {
 
 initializeApp(config().firebase);
 
-export * from "./graphql";
-
-export { default as blogCounter } from "./events/blogCounter";
+export {
+    default as blogCounter,
+} from "./blogCounter";
+export {
+    default as graphql,
+} from "./graphql";
+export {
+    default as voyager,
+} from "./voyager";

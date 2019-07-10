@@ -9,18 +9,18 @@ import {
 import typeDefs from "./typeDefs.gql";
 import resolvers from "./resolvers";
 
-export const graphql = https.onRequest((app => {
-    new ApolloServer({
-        typeDefs,
-        resolvers,
-        
-        playground: true,
-        introspection: true,
-    }).applyMiddleware({
-        app,
-        
-        cors: true,
-    });
+const app = express();
+
+new ApolloServer({
+    typeDefs,
+    resolvers,
     
-    return app;
-})(express()));
+    playground: true,
+    introspection: true,
+}).applyMiddleware({
+    app,
+    
+    cors: true,
+});
+
+export default https.onRequest(app);
