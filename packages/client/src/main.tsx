@@ -1,6 +1,6 @@
 import {
-    Component,
     Callable,
+    Component,
     Mutation,
 } from "@vue-decorators/all";
 import ElementUI from "element-ui";

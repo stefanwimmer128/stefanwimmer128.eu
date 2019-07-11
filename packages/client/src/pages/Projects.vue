@@ -31,7 +31,7 @@
 <template lang="pug">
     div
         h1 Projects
-        el-carousel(:type="type" :autoplay="8e3" :direction="direction")
+        el-carousel(:type="type" :autoplay="true" :interval="8e3" :direction="direction")
             el-carousel-item
                 el-card(shadow="hover").bg-light.text-dark.card
                     h3(slot="header") MoreFood 2

@@ -1,3 +1,7 @@
+import {
+    RouteConfig,
+} from "vue-router/types/router";
+
 export default [
     {
         path: "/",
@@ -33,4 +37,4 @@ export default [
         path: "*",
         component: () => import(/* webpackChunkName: "Error404" */ "../pages/Error404.vue"),
     },
-];
+] as RouteConfig[];

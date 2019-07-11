@@ -69,8 +69,13 @@
         })
         readonly nodes = [];
         
-        page = 1;
-        size = 10;
+        get page() {
+            return parseInt(this.$route.query.page as string) || 1;
+        }
+        
+        get size() {
+            return parseInt(this.$route.query.size as string) || 10;
+        }
         
         refresh() {
             this.$apollo.queries.count.refetch();
@@ -78,7 +83,21 @@
         }
         
         updateSize(size: number) {
-            this.size = size;
+            this.$router.push({
+                query: {
+                    page: this.page.toString(),
+                    size: size.toString(),
+                },
+            });
+        }
+        
+        updatePage(page: number) {
+            this.$router.push({
+                query: {
+                    page: page.toString(),
+                    size: this.size.toString(),
+                },
+            });
         }
         
         formatDate(date: string) {
@@ -86,9 +105,7 @@
         }
         
         renderMarkdown(message: string) {
-            return marked(message.replace(/\\n/g, "\n"), {
-                sanitize: true,
-            });
+            return marked(message.replace(/\\n/g, "\n"));
         }
     }
 </script>
@@ -102,8 +119,8 @@
 <template lang="pug">
     div
         h1 Blog
-        div(element-loading-text="Loading..." v-loading="$apollo.loading")
-            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
+        div(v-loading="$apollo.loading" element-loading-text="Loading...")
+            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :page-size="size" @size-change="updateSize" :current-page="page" @current-change="updatePage")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
             div(:key="i" v-for="(entry, i) in nodes").card
                 div.card-header
@@ -111,6 +128,6 @@
                     h6.card-subtitle.text-muted ({{formatDate(entry.date)}})
                 div(v-html="renderMarkdown(entry.message)").card-body.card-text
             span(v-if="count === 0").ml-5.text-muted No entries available!
-            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :current-page.sync="page" :page-size="size" @size-change="updateSize")
+            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :page-size="size" @size-change="updateSize" :current-page="page" @current-change="updatePage")
                 el-button(@click="refresh" icon="el-icon-refresh") Refresh
 </template>
