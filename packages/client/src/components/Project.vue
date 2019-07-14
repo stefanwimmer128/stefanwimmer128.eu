@@ -39,7 +39,7 @@
 <template lang="pug">
     div
         template(v-if="isMobile || isPrerender")
-            h2 {{title}}
+            h3 {{title}}
             slot
         div(v-else).fade.modal#project-modal
             div.modal-dialog
