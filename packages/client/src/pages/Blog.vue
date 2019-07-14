@@ -2,11 +2,16 @@
     import gql from "graphql-tag";
     import moment from "moment";
     import marked from "marked";
-    import Vue from "vue";
     import {
         Component,
+        mixins,
         SmartQuery,
     } from "@vue-decorators/all";
+    
+    import Loading from "../components/Loading.vue";
+    import Pagination from "../components/Pagination.vue";
+    
+    import IsPrerender from "../mixins/IsPrerender";
     
     type BlogCountResult = {
         blog: {
@@ -33,8 +38,12 @@
         metaInfo: {
             title: "Blog",
         },
+        components: {
+            Loading,
+            Pagination,
+        },
     })
-    export default class Blog extends Vue {
+    export default class Blog extends mixins(IsPrerender) {
         @SmartQuery<Blog, number, BlogCountResult>({
             query: gql`query {
                 blog {
@@ -43,6 +52,9 @@
             }`,
             update(data) {
                 return data.blog.count;
+            },
+            skip() {
+                return this.isPrerender;
             },
         })
         readonly count = 0;
@@ -65,6 +77,9 @@
             },
             update(data) {
                 return data.blog.nodes;
+            },
+            skip() {
+                return this.isPrerender;
             },
         })
         readonly nodes = [];
@@ -118,16 +133,18 @@
 
 <template lang="pug">
     div
-        h1 Blog
-        div(v-loading="$apollo.loading" element-loading-text="Loading...")
-            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :page-size="size" @size-change="updateSize" :current-page="page" @current-change="updatePage")
-                el-button(@click="refresh" icon="el-icon-refresh") Refresh
-            div(:key="i" v-for="(entry, i) in nodes").card
-                div.card-header
-                    h4.card-title {{entry.title}}
-                    h6.card-subtitle.text-muted ({{formatDate(entry.date)}})
-                div(v-html="renderMarkdown(entry.message)").card-body.card-text
-            span(v-if="count === 0").ml-5.text-muted No entries available!
-            el-pagination(layout="total, sizes, prev, pager, next, slot" :total="count" :page-sizes="[ 5, 10, 20 ]" :page-size="size" @size-change="updateSize" :current-page="page" @current-change="updatePage")
-                el-button(@click="refresh" icon="el-icon-refresh") Refresh
+        h2 Blog
+        loading(:loading="$apollo.queries.count.loading" v-if="! isPrerender")
+            i(v-if="count === 0").text-white-50 No entries available!
+            template(v-else)
+                pagination(:total="count" :size="size" :current="page" @change-page="updatePage").justify-content-center
+                    el-button(type="text" icon="el-icon-refresh" @click="refresh").text-info Refresh
+                loading(:loading="$apollo.queries.nodes.loading")
+                    div(:key="i" v-for="(entry, i) in nodes").bg-secondary.card.my-2
+                        div.card-header
+                            h4.card-title {{entry.title}}
+                            h6.card-subtitle.text-white-50 ({{formatDate(entry.date)}})
+                        div(v-html="renderMarkdown(entry.message)").card-body.card-text
+                pagination(:total="count" :size="size" :current="page" @change-page="updatePage").justify-content-center
+                    el-button(type="text" icon="el-icon-refresh" @click="refresh").text-info Refresh
 </template>

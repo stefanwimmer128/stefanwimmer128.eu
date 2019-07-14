@@ -1,13 +1,16 @@
 import "source-map-support/register";
 
 import {
+    credential,
     initializeApp,
 } from "firebase-admin";
 import {
     config,
 } from "firebase-functions";
 
-initializeApp(config().firebase);
+initializeApp({
+    credential: credential.applicationDefault(),
+});
 
 export {
     default as blogCounter,

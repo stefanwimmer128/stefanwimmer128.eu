@@ -1,6 +1,6 @@
-import Vue from "vue";
 import {
     Component,
+    Vue,
 } from "@vue-decorators/all";
 
 function computeIsMobile() {

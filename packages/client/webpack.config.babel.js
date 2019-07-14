@@ -1,5 +1,4 @@
 import prettyhtml from "@starptech/prettyhtml";
-import cheerio from "cheerio";
 import {
     CleanWebpackPlugin,
 } from "clean-webpack-plugin";
@@ -236,12 +235,13 @@ if (__devServer) {
 } else {
     config.plugins.push(
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin(htmlSettings("__index.html")),
+        new HtmlWebpackPlugin(htmlSettings("404.html")),
         new PrerenderSPAPlugin({
             staticDir: join(__dirname, "public"),
             routes: [
                 "/",
                 "/about",
+                "/blog",
                 "/projects",
                 "/projects/morefood2",
                 "/projects/easystorage",
@@ -257,12 +257,7 @@ if (__devServer) {
                 devtools: true,
             }),
             postProcess(context) {
-                const $ = cheerio.load(context.html);
-                
-                $("body").removeAttr("class");
-                $("body > .v-modal").remove();
-                
-                context.html = prettyhtml($.html(), {
+                context.html = prettyhtml(context.html, {
                     tabWidth: 4,
                 }).toString();
                 

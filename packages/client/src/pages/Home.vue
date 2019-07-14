@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Vue from "vue";
     import {
         Component,
+        Vue,
     } from "@vue-decorators/all";
     
     @Component({
@@ -14,6 +14,6 @@
 
 <template lang="pug">
     div
-        h1 Home
+        h2 Home
         p Welcome to my homepage. Here I present all of my current projects.
 </template>

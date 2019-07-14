@@ -13,10 +13,6 @@
       {
         "source": "/voyager",
         "function": "voyager"
-      },
-      {
-        "source": "**",
-        "destination": "/__index.html"
       }
     ]
   },

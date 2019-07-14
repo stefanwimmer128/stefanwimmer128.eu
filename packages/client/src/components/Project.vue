@@ -1,11 +1,13 @@
 <script lang="ts">
     import {
         Component,
-        Mixins,
+        mixins,
         Prop,
     } from "@vue-decorators/all";
+    import $ from "jquery";
     
     import IsMobile from "../mixins/IsMobile";
+    import IsPrerender from "../mixins/IsPrerender";
     
     @Component({
         metaInfo() {
@@ -14,25 +16,37 @@
             };
         },
     })
-    export default class Project extends Mixins(IsMobile) {
+    export default class Project extends mixins(IsMobile, IsPrerender) {
         @Prop({
             required: true,
         })
         readonly title!: string;
         
-        visible: boolean = true;
-        
         back() {
             this.$router.push("/projects");
+        }
+        
+        mounted() {
+            if (! (this.isMobile || this.isPrerender)) {
+                $("#project-modal").modal("show");
+                
+                $("#project-modal").on("hidden.bs.modal", this.back.bind(this));
+            }
         }
     }
 </script>
 
 <template lang="pug">
     div
-        template(v-if="isMobile")
-            h1 {{title}}
+        template(v-if="isMobile || isPrerender")
+            h2 {{title}}
             slot
-        el-dialog(v-else :visible.sync="visible" :title="title" @closed="back")
-            slot
+        div(v-else).fade.modal#project-modal
+            div.modal-dialog
+                div.bg-dark.modal-content.text-light
+                    div.modal-header
+                        h5.modal-title {{title}}
+                        button(type="button" data-dismiss="modal").close.text-light &times;
+                    div.modal-body
+                        slot
 </template>

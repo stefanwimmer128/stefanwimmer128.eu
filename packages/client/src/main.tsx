@@ -2,10 +2,11 @@ import {
     Callable,
     Component,
     Mutation,
+    Vue,
 } from "@vue-decorators/all";
 import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
-import Vue from "vue";
+import VueMeta from "vue-meta";
 import {
     Route,
 } from "vue-router";
@@ -13,11 +14,11 @@ import {
     sync,
 } from "vuex-router-sync";
 
-import "./meta";
-
 import router from "./router";
 import store from "./store";
-import apolloProvider from "./apollo/provider";
+import {
+    provider as apolloProvider,
+} from "./apollo";
 
 import * as History from "./store/history";
 
@@ -30,6 +31,8 @@ import {
 Vue.use(ElementUI, {
     locale,
 });
+
+Vue.use(VueMeta);
 
 sync(store, router);
 
@@ -60,6 +63,7 @@ export default class Main extends Vue {
             
             next();
         });
+        
         this.$router.afterEach((to, from) => {
             this.loading(false);
             

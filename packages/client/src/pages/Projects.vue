@@ -1,7 +1,7 @@
 <script lang="ts">
     import {
         Component,
-        Mixins,
+        mixins,
     } from "@vue-decorators/all";
     
     import IsMobile from "../mixins/IsMobile";
@@ -11,7 +11,7 @@
             title: "Projects",
         },
     })
-    export default class Projects extends Mixins(IsMobile) {
+    export default class Projects extends mixins(IsMobile) {
         get type() {
             return this.isMobile ? void 0 : "card";
         }
@@ -30,24 +30,24 @@
 
 <template lang="pug">
     div
-        h1 Projects
+        h2 Projects
         el-carousel(:type="type" :autoplay="true" :interval="8e3" :direction="direction")
-            el-carousel-item
-                el-card(shadow="hover").bg-light.text-dark.card
+            el-carousel-item.h-auto
+                el-card(shadow="hover").bg-dark.card.text-light
                     h3(slot="header") MoreFood 2
                     p Bringing the next logical step from vanilla food. More food-items and a new crop on top.
                     p
                         router-link(to="/projects/morefood2")
                             el-button(type="info") See more
-            el-carousel-item
-                el-card(shadow="hover").bg-light.text-dark.card
+            el-carousel-item.h-auto
+                el-card(shadow="hover").bg-dark.card.text-light
                     h3(slot="header") EasyStorage
                     p Easily store and load serializable objects, List's and Map's.
                     p
                         router-link(to="/projects/easystorage")
                             el-button(type="info") See more
-            el-carousel-item
-                el-card(shadow="hover").bg-light.text-dark.card
+            el-carousel-item.h-auto
+                el-card(shadow="hover").bg-dark.card.text-light
                     h3(slot="header") @stefanwimmer128/core
                     p Complex features made easy
                     p

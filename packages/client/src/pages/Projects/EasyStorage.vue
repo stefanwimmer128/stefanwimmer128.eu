@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Vue from "vue";
     import {
         Component,
+        Vue,
     } from "@vue-decorators/all";
     
     import Project from "../../components/Project.vue";
