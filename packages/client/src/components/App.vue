@@ -1,12 +1,9 @@
 <script lang="ts">
     import {
-        Callable,
         Component,
         State,
         Vue,
     } from "@vue-decorators/all";
-    
-    import * as History from "../store/history";
     
     import Loading from "./Loading.vue";
     
@@ -18,15 +15,6 @@
     export default class App extends Vue {
         @State("loading")
         readonly loading!: boolean;
-        
-        @History.Getter("hasBefore")
-        readonly hasBefore!: boolean;
-        
-        @History.Getter("hasNext")
-        readonly hasNext!: boolean;
-        
-        @History.Action("go")
-        readonly go!: Callable<number>;
     }
 </script>
 
@@ -38,12 +26,12 @@
 
 <template lang="pug">
     div#app
-        div.bg-dark.navbar.border-bottom.border-secondary.navbar-dark.navbar-expand-md.sticky-top
-            el-button-group.navbar-brand
-                el-button(v-if="hasBefore" type="text" icon="el-icon-arrow-left" @click="go(-1)")
-                el-button(type="text" @click="$router.push('/')") stefanwimmer128
-                el-button(v-if="hasNext" type="text" icon="el-icon-arrow-right" @click="go(1)")
-            button.navbar-toggler(data-target="#navbar" data-toggle="collapse")
+        div.navbar.navbar-dark.navbar-expand-md.bg-dark.border-bottom.border-secondary.sticky-top
+            el-button-group.navbar-brand.text-monospace
+                el-button(type="text" @click="$router.go(-1)") &lt;
+                el-button(type="text" @click="$router.push('/')").mx-1 stefanwimmer128
+                el-button(type="text" @click="$router.go(1)") /&gt;
+            button(data-target="#navbar" data-toggle="collapse").navbar-toggler
                 span.navbar-toggler-icon
             div.collapse.navbar-collapse#navbar
                 div.navbar-nav
@@ -51,7 +39,7 @@
                     router-link(to="/projects").nav-item.nav-link Projects
                     router-link(to="/blog").nav-item.nav-link Blog
                     a(href="https://github.com/stefanwimmer128" target="_blank").nav-item.nav-link GitHub
-        loading(:loading="loading").bg-dark.m-2.mx-4.p-2.rounded.text-light
+        loading(:loading="loading").m-2.mx-4.p-2.rounded.bg-dark.text-light
             router-view
-        div.bg-dark.m-2.mx-4.p-2.rounded-pill.text-center.text-white-50#copyright Copyright (c) 2017-2019, Stefan Wimmer
+        div.m-2.mx-4.p-2.rounded-pill.bg-dark.text-center.text-monospace.text-white-50#copyright Copyright (c) 2017-2019, Stefan Wimmer
 </template>

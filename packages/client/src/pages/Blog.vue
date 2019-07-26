@@ -4,8 +4,8 @@
     import marked from "marked";
     import {
         Component,
-        mixins,
         SmartQuery,
+        mixins,
     } from "@vue-decorators/all";
     
     import Loading from "../components/Loading.vue";
@@ -140,7 +140,7 @@
                 pagination(:total="count" :size="size" :current="page" @change-page="updatePage").justify-content-center
                     el-button(type="text" icon="el-icon-refresh" @click="refresh").text-info Refresh
                 loading(:loading="$apollo.queries.nodes.loading")
-                    div(:key="i" v-for="(entry, i) in nodes").bg-secondary.card.my-2
+                    div(:key="i" v-for="(entry, i) in nodes").card.my-2.bg-secondary
                         div.card-header
                             h4.card-title {{entry.title}}
                             h6.card-subtitle.text-white-50 ({{formatDate(entry.date)}})

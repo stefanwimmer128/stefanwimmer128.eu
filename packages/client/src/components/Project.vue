@@ -1,8 +1,8 @@
 <script lang="ts">
     import {
         Component,
-        mixins,
         Prop,
+        mixins,
     } from "@vue-decorators/all";
     import $ from "jquery";
     
@@ -41,9 +41,9 @@
         template(v-if="isMobile || isPrerender")
             h3 {{title}}
             slot
-        div(v-else).fade.modal#project-modal
+        div(v-else).modal.fade#project-modal
             div.modal-dialog
-                div.bg-dark.modal-content.text-light
+                div.modal-content.bg-dark.text-light
                     div.modal-header
                         h5.modal-title {{title}}
                         button(type="button" data-dismiss="modal").close.text-light &times;

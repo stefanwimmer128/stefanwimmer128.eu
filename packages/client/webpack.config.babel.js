@@ -9,6 +9,7 @@ import HtmlWebpackTemplate from "html-webpack-template";
 import MomentLocalesWebpackPlugin from "moment-locales-webpack-plugin";
 import {
     join,
+    relative,
 } from "path";
 import PrerenderSPAPlugin, {
     PuppeteerRenderer,
@@ -175,6 +176,10 @@ const config = {
         
         library: __mode === "development" ? "$vm" : void 0,
         libraryExport: "default",
+        
+        devtoolModuleFilenameTemplate(info) {
+            return `webpack:///${relative(join(__dirname, "../.."), info.absoluteResourcePath)}`;
+        },
     },
     plugins: [
         new FriendlyErrorsWebpackPlugin(),

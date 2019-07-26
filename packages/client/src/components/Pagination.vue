@@ -25,6 +25,34 @@
         get pages() {
             return Math.ceil(this.total / this.size);
         }
+        
+        get hasPrev() {
+            return this.current > 1;
+        }
+        
+        get hasNext() {
+            return this.current < this.pages;
+        }
+        
+        classesControls(active) {
+            return {
+                "disabled": ! active,
+                "text-white-50": ! active,
+                "text-light": active,
+            };
+        }
+        
+        classesPage(page) {
+            return {
+                "text-primary": page === this.current,
+                "text-light": page !== this.current,
+            };
+        }
+        
+        goto(page) {
+            if (page >= 1 && page <= this.pages)
+            this.$emit("change-page", page);
+        }
     }
 </script>
 
@@ -36,11 +64,11 @@
 
 <template lang="pug">
     div.d-flex.d-flex-row
-        span.align-self-center.mx-2.text-white-50 Total {{total}}
-        div.align-self-center.mx-2.pagination.pagination-sm
-            span(@click="current > 1 && $emit('change-page', current - 1)" :class="{ 'disabled': current <= 1, 'text-white-50': current <= 1, 'text-light': current > 1 }").bg-dark.el-icon-arrow-left.page-item.page-link.rounded-left
-            span(v-for="page in pages" @click="$emit('change-page', page)" :class="{ 'text-primary': page === current, 'text-light': page !== current }").bg-dark.page-item.page-link {{page}}
-            span(@click="current < pages && $emit('change-page', current + 1)" :class="{ 'disabled': current >= pages, 'text-white-50': current >= pages, 'text-light': current < pages }").bg-dark.el-icon-arrow-right.page-item.page-link.rounded-right
-        div.align-self-center.mx-2
+        span.mx-2.align-self-center.text-white-50 Total {{total}}
+        div.mx-2.align-self-center.pagination.pagination-sm
+            span(@click="goto(current - 1)" :class="classesControls(hasPrev)").page-item.page-link.bg-dark.rounded-left.el-icon-arrow-left
+            span(v-for="page in pages" @click="goto(page)" :class="classesPage(page)").page-item.page-link.bg-dark {{page}}
+            span(@click="goto(current + 1)" :class="classesControls(hasNext)").page-item.page-link.bg-dark.rounded-right.el-icon-arrow-right
+        div.mx-2.align-self-center
             slot
 </template>

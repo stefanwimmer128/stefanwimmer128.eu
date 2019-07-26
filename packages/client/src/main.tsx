@@ -8,9 +8,6 @@ import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import VueMeta from "vue-meta";
 import {
-    Route,
-} from "vue-router";
-import {
     sync,
 } from "vuex-router-sync";
 
@@ -19,8 +16,6 @@ import store from "./store";
 import {
     provider as apolloProvider,
 } from "./apollo";
-
-import * as History from "./store/history";
 
 import App from "./components/App.vue";
 
@@ -41,21 +36,18 @@ const waitForVueMeta = prerenderAfter();
 @Component({
     metaInfo: {
         titleTemplate: "stefanimmer128 - %s",
-        title: "Home",
+        title: "Loading...",
         changed() {
             waitForVueMeta();
         },
     },
+    apolloProvider,
     router,
     store,
-    apolloProvider,
 })
 export default class Main extends Vue {
     @Mutation("loading")
     readonly loading!: Callable<boolean>;
-    
-    @History.Action("push")
-    readonly push!: Callable<Route>;
     
     mounted() {
         this.$router.beforeEach((to, from, next) => {
@@ -66,8 +58,6 @@ export default class Main extends Vue {
         
         this.$router.afterEach((to, from) => {
             this.loading(false);
-            
-            this.push(to);
         });
         
         prerenderAfter.resolve();

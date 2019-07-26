@@ -4,9 +4,6 @@ import {
     credential,
     initializeApp,
 } from "firebase-admin";
-import {
-    config,
-} from "firebase-functions";
 
 initializeApp({
     credential: credential.applicationDefault(),

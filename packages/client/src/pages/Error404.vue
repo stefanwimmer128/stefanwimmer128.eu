@@ -15,5 +15,7 @@
 <template lang="pug">
     div
         h2 Error 404 Not Found
-        p The requested path <code>{{$route.path}}</code> was not found on this server.
+        p The requested path 
+            code {{$route.path}}
+            |  was not found on this server.
 </template>
