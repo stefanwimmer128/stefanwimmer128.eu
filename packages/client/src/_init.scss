@@ -1,0 +1,18 @@
+$grid-gutter-width: 2rem;
+
+$font-family-sans-serif: Fira Sans, sans-serif;
+$font-family-monospace: Fira Mono, monospace;
+
+$enable-responsive-font-sizes: true;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+$body-bg: $secondary;
+
+$--font-path: "~element-theme-chalk/src/fonts";
+$--font-size-base: $font-size-base;
+$--font-size-large: $font-size-lg;
+$--font-size-small: $font-size-sm;
+$--size-base: $font-size-base;

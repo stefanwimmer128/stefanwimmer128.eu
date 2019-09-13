@@ -59,6 +59,7 @@
 <style lang="scss" scoped>
     .page-item.page-link:not(.disabled) {
         cursor: pointer;
+        pointer-events: none;
     }
 </style>
 

@@ -259,7 +259,6 @@ if (__devServer) {
                 inject: true,
                 renderAfterDocumentEvent: "prerender",
                 headless: false,
-                devtools: true,
             }),
             postProcess(context) {
                 context.html = prettyhtml(context.html, {

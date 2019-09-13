@@ -6,11 +6,12 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna exec -- yarn build",
     "serve": "firebase serve --host 0.0.0.0"
   },
   "devDependencies": {
-    "@playlyfe/gql": "2.6.1",
-    "firebase-tools": "7.2.1",
+    "@playlyfe/gql": "2.6.2",
+    "firebase-tools": "7.3.2",
     "lerna": "3.16.4"
   }
 }

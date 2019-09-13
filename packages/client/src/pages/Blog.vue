@@ -125,12 +125,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
-    div.card {
-        margin: 4px 0;
-    }
-</style>
-
 <template lang="pug">
     div
         h2 Blog
