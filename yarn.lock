@@ -2372,7 +2372,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.7.tgz#1854f0a9aa8d2cd6818d607b3d091346c6730362"
   integrity sha512-on4MmIDgHXiuJDELPk1NFaKVUxxCFr37tm8E9yN6rAiF5Pzp/9bBfBHkoexqRiY+hk/Z04EJU9kKEb59YqJ82A==
 
-"@types/node@^12.7.4":
+"@types/node@^12.7.5":
   version "12.7.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
   integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
@@ -2500,32 +2500,32 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@vue-decorators/all@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/all/-/all-1.7.0.tgz#82bb6497be9e49088565d0efd41ffe2e85d86dd3"
-  integrity sha512-mePnRexmUhrvJB2dE879UV+rpwev2DbgaXhpICrjkfB+WL21VNOQ+BMm6bdh307jguxR/JQg0SVZymwoV8rk5Q==
+"@vue-decorators/all@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/all/-/all-1.8.0.tgz#fb3e08cde68dec449b129f96af76f8807c710006"
+  integrity sha512-mU0kmC9p6JTeOap2Nh/hpfjvNlKWdY4qmgFvTjPbV14dukbKDY3Fr5KNZtx27msGWnyUreSzf3puv1dVLl3SAw==
   dependencies:
-    "@vue-decorators/apollo" "^1.7.0"
-    "@vue-decorators/types" "^1.7.0"
+    "@vue-decorators/apollo" "^1.8.0"
+    "@vue-decorators/types" "^1.8.0"
     vue-class-component "^7.1.0"
     vue-property-decorator "^8.2.2"
     vuex-class "^0.3.2"
 
-"@vue-decorators/apollo@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/apollo/-/apollo-1.7.0.tgz#6ed578f96a84ad6b993174d0b65d923b0bcd3ee5"
-  integrity sha512-PpIIv3mT8Mv17AXpxilVrymR1wsZENtsv5yD1+lb8I4Bm8hIv/LfIqhPgXMDksREY7fK0HBF50Qkm4r75RbBaw==
+"@vue-decorators/apollo@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/apollo/-/apollo-1.8.0.tgz#a910d94ceefc80db5027dbdc391b7141b0f138ab"
+  integrity sha512-82TyuBg2BTs+QN6xMkRSqlfli+mD0TpIM7ymgBI9QrxKuvYWXVnfjrtFlPMGjS7X0mNuaeu0gDTZ6kfX/Ld+0g==
   dependencies:
     "@types/graphql" "^14.5.0"
-    "@vue-decorators/types" "^1.7.0"
+    "@vue-decorators/types" "^1.8.0"
     graphql "^14.5.5"
     vue-apollo "^3.0.0-rc.4"
     vue-class-component "^7.1.0"
 
-"@vue-decorators/types@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@vue-decorators/types/-/types-1.7.0.tgz#72e3c14c5d35877efd0aa06f454aae7742451f08"
-  integrity sha512-FeMm6hKLWy3D8uvMqrFXerDbndb4FOObweBbSiTPUV0+GNbgR17gUpApR1hpJlfI5iKd9ev8/TRa8hZlykA6zQ==
+"@vue-decorators/types@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@vue-decorators/types/-/types-1.8.0.tgz#c1b38cacdd16794d681653645a7594f955de009c"
+  integrity sha512-NGNkhS2ztqGGeAOAtOcAi/5O6Iwieknxh05RLdqJyfeN9MCzyK4ZFVUnAAMSjY6JK21qKf3ZfyXSbpGWA+6KDg==
 
 "@vue/babel-helper-vue-jsx-merge-props@1.0.0", "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -11867,13 +11867,13 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.21.2:
-  version "1.21.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.21.2.tgz#eaabd07d0bd309587ad8bebf731fca6fcb96f4d0"
-  integrity sha512-sCAHlcQ/PExU5t/kRwkEWHdhGmQrZ2IgdQzbjPVNfhWbKHMMZGYqkASVTpQqRPLtQKg15xzEscc+BnIK/TE7/Q==
+rollup@1.21.3:
+  version "1.21.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.21.3.tgz#2d957e04b230b06a85b8c617bf594f92c37c4d5d"
+  integrity sha512-43CgeUtHhfiqBOUd0uJo5NEOg2FuheF3SqGN8BqgvnqB4xM2TbfPdudeSdllDcMKpagHb//qtpaAADBurT4GzA==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^12.7.4"
+    "@types/node" "^12.7.5"
     acorn "^7.0.0"
 
 router@^1.3.1:

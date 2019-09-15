@@ -259,6 +259,10 @@ if (__devServer) {
                 inject: true,
                 renderAfterDocumentEvent: "prerender",
                 headless: false,
+                devtools: true,
+                args: [
+                    "--start-maximized",
+                ],
             }),
             postProcess(context) {
                 context.html = prettyhtml(context.html, {
