@@ -11,11 +11,16 @@
             required: true,
         })
         readonly loading!: boolean;
+        
+        @Prop({
+            default: "div",
+        })
+        readonly tag!: any;
     }
 </script>
 
 <template lang="pug">
-    div
+    command(:is="tag")
         div(v-if="loading").d-flex.justify-content-center
             div(role="status").spinner-border
                 span.sr-only Loading...
