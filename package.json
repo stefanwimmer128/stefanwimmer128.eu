@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@playlyfe/gql": "2.6.2",
-    "firebase-tools": "7.3.2",
+    "firebase-tools": "7.4.0",
     "lerna": "3.16.4"
   }
 }

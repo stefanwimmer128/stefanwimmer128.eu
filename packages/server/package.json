@@ -27,11 +27,11 @@
   "dependencies": {
     "@babel/runtime-corejs3": "7.6.2",
     "@google-cloud/firestore": "2.3.0",
-    "apollo-server-express": "2.9.3",
+    "apollo-server-express": "2.9.4",
     "express": "4.17.1",
     "firebase-admin": "8.6.0",
     "firebase-functions": "3.2.0",
-    "graphql": "14.5.7",
+    "graphql": "14.5.8",
     "graphql-voyager": "1.0.0-rc.28",
     "source-map-support": "0.5.13"
   }

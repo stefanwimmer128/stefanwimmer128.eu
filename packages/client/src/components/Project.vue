@@ -23,15 +23,29 @@
         readonly title!: string;
         
         back() {
-            this.$router.push("/projects");
+            if (! (this.isMobile || this.isPrerender))
+                this.$router.push("/projects");
         }
         
         mounted() {
-            if (! (this.isMobile || this.isPrerender)) {
-                $("#project-modal").modal("show");
-                
-                $("#project-modal").on("hidden.bs.modal", this.back.bind(this));
-            }
+            this.updateModal();
+        }
+        
+        beforeUpdate() {
+            this.updateModal();
+        }
+        
+        updated() {
+            this.updateModal();
+        }
+        
+        updateModal() {
+            if (this.isMobile || this.isPrerender)
+                $(this.$refs.modal).modal("hide");
+            else if (! $(this.$refs.modal).hasClass("show"))
+                $(this.$refs.modal).modal("show");
+            
+            $(this.$refs.modal).on("hidden.bs.modal", this.back.bind(this));
         }
     }
 </script>
@@ -41,8 +55,8 @@
         template(v-if="isMobile || isPrerender")
             h3 {{title}}
             slot
-        div(v-else).modal.fade#project-modal
-            div.modal-dialog
+        div(v-else ref="modal").modal.fade
+            div.modal-dialog.modal-lg
                 div.modal-content.bg-dark.text-light
                     div.modal-header
                         h5.modal-title {{title}}

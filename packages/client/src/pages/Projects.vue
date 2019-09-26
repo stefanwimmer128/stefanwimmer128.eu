@@ -28,6 +28,13 @@
         el-carousel(:type="type" :autoplay="true" :interval="8e3" :direction="direction")
             el-carousel-item.h-auto
                 el-card(shadow="hover").card.bg-dark.text-light.text-center
+                    h3(slot="header") vue-decorators
+                    p #[code @vue-decorators/all] - #[code @vue-decorators/apollo] - #[code @vue-decorators/types]
+                    p Decorators for Vue
+                    router-link(to="/projects/vue-decorator")
+                        el-button(type="info") See more
+            el-carousel-item.h-auto
+                el-card(shadow="hover").card.bg-dark.text-light.text-center
                     h3(slot="header") MoreFood 2
                     p Bringing the next logical step from vanilla food. More food-items and a new crop on top.
                     p

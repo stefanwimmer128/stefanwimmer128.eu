@@ -16,6 +16,10 @@ export default [
         component: () => import(/* webpackChunkName: "Projects" */ "../pages/Projects.vue"),
         children: [
             {
+                path: "vue-decorator",
+                component: () => import(/* webpackChunkName: "Projects/VueDecorators" */ "../pages/Projects/VueDecorators.vue"),
+            },
+            {
                 path: "morefood2",
                 component: () => import(/* webpackChunkName: "Projects/MoreFood2" */ "../pages/Projects/MoreFood2.vue"),
             },

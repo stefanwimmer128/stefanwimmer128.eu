@@ -13,6 +13,7 @@
         readonly loading!: boolean;
         
         @Prop({
+            type: null,
             default: "div",
         })
         readonly tag!: any;

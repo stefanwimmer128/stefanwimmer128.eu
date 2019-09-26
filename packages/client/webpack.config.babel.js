@@ -255,6 +255,7 @@ if (__devServer) {
                 "/about",
                 "/blog",
                 "/projects",
+                "/projects/vue-decorators",
                 "/projects/morefood2",
                 "/projects/easystorage",
                 "/projects/core",
@@ -263,7 +264,7 @@ if (__devServer) {
                 proxy,
             },
             renderer: new PuppeteerRenderer({
-                inject: true,
+                inject: true && process.env.SPA !== "false",
                 renderAfterDocumentEvent: "prerender",
                 headless: false,
                 devtools: true,
