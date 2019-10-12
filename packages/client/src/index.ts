@@ -1,7 +1,7 @@
 import "core-js";
+import "regenerator-runtime/runtime";
+import "intersection-observer";
 import "whatwg-fetch";
-
-import "bootstrap";
 
 import "./main.scss";
 

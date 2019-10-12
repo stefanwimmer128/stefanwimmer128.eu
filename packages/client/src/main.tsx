@@ -4,6 +4,7 @@ import {
     Mutation,
     Vue,
 } from "@vue-decorators/all";
+import BootstrapVue from "bootstrap-vue";
 import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
 import VueMeta from "vue-meta";
@@ -22,6 +23,8 @@ import App from "./components/App.vue";
 import {
     prerenderAfter,
 } from "./prerender";
+
+Vue.use(BootstrapVue);
 
 Vue.use(ElementUI, {
     locale,

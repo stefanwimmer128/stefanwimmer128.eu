@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans");
 
-@import "./_init.scss";
+@import "init";
 
 @import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap-vue/src/index.scss";
 @import "~element-theme-chalk/src/index.scss";
 
 html, body {
