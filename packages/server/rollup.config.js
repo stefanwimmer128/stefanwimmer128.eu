@@ -8,10 +8,6 @@ import generatePackageJson from "rollup-plugin-generate-package-json";
 import progress from "rollup-plugin-progress";
 import resolve from "rollup-plugin-node-resolve";
 
-import {
-    devDependencies,
-} from "./package.json";
-
 export default {
     input: "./src/index.ts",
     output: {
@@ -77,9 +73,6 @@ export default {
                 engines: {
                     node: "8",
                 },
-                devDependencies: {
-                    "firebase-functions-test": devDependencies["firebase-functions-test"],
-                },
             },
             additionalDependencies: [
                 "graphql",
@@ -89,7 +82,4 @@ export default {
     external: external({
         modulesFromFile: join(__dirname, "package.json"),
     }),
-    watch: {
-        clearScreen: false,
-    },
 };

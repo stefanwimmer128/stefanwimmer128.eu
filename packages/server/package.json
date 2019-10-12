@@ -16,8 +16,6 @@
     "@kocal/rollup-plugin-graphql": "1.0.0",
     "@types/graphql": "14.5.0",
     "@yelo/rollup-node-external": "1.0.1",
-    "firebase-functions-test": "0.1.6",
-    "grpc": "1.24.0",
     "rollup": "1.23.1",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-generate-package-json": "3.1.3",
