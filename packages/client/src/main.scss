@@ -6,14 +6,7 @@
 @import "~bootstrap-vue/src/index.scss";
 @import "~element-theme-chalk/src/index.scss";
 
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    
-    height: 100%;
-    
-    font: {
-        family: $font-family-base;
-        size: $font-size-base;
-    };
+html {
+    scrollbar-color: $dark $secondary;
+    scrollbar-width: thin;
 }

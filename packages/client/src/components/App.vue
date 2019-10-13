@@ -43,5 +43,5 @@
                         b-nav-item(href="https://github.com/stefanwimmer128" target="_blank") GitHub
         loading(:loading="loading").container.mx-2.mx-sm-auto.w-auto.mt-3.py-3.rounded.bg-dark.text-light
             router-view
-        .container.mt-3.py-2.rounded-pill.bg-dark.text-center.text-monospace.text-white-50#copyright Copyright (c) 2017-2019, Stefan Wimmer
+        .container.my-3.py-2.rounded-pill.bg-dark.text-center.text-monospace.text-white-50#copyright Copyright (c) 2017-2019, Stefan Wimmer
 </template>
