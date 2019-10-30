@@ -5,6 +5,7 @@ import {
 } from "path";
 import babel from "rollup-plugin-babel";
 import generatePackageJson from "rollup-plugin-generate-package-json";
+import license from "rollup-plugin-license";
 import progress from "rollup-plugin-progress";
 import resolve from "rollup-plugin-node-resolve";
 
@@ -77,6 +78,15 @@ export default {
             additionalDependencies: [
                 "graphql",
             ],
+        }),
+        license({
+            sourcemap: true,
+            banner: {
+                commentStyle: "ignored",
+                content: {
+                    file: join(__dirname, "../../LICENSE"),
+                },
+            },
         }),
     ],
     external: external({

@@ -4,6 +4,9 @@ import {
 } from "clean-webpack-plugin";
 import ExtractCssChunksWebpackPlugin from "extract-css-chunks-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
+import {
+    readFileSync,
+} from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackTemplate from "html-webpack-template";
 import MomentLocalesWebpackPlugin from "moment-locales-webpack-plugin";
@@ -19,6 +22,7 @@ import {
     VueLoaderPlugin,
 } from "vue-loader";
 import {
+    BannerPlugin,
     DefinePlugin,
     HotModuleReplacementPlugin,
     NamedModulesPlugin,
@@ -201,6 +205,9 @@ const config = {
             hot: __devServer,
         }),
         new HtmlWebpackPlugin(htmlSettings()),
+        new BannerPlugin(readFileSync(join(__dirname, "../../LICENSE"), {
+            encoding: "utf-8",
+        })),
     ],
     optimization: {
         minimizer: [
