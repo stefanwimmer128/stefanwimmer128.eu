@@ -2424,10 +2424,10 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
   integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
 
-"@types/marked@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.7.0.tgz#b9de675412d26515b069ad478cf43165816d1d90"
-  integrity sha512-UcrlF5NyA7DwckjJeE7xUfEB83i4a3KsS+dH7/gqWKJnTnUOW0W0eL52EhtB6+nKw9LTX/IS5nsK3wDhjZ1GAA==
+"@types/marked@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.7.1.tgz#2f56cb2aa942efde23bd2beb9e07f4b6ddd25563"
+  integrity sha512-QMgeCgUMyNKfteIzmVuFcyGXORiD67fbEQbwbfJLIn+HejcyaQm0H00q66PJz8bMb8Ve4JrsJ2JXuStyZ4DjZg==
 
 "@types/mime@*":
   version "2.0.1"
@@ -5113,10 +5113,10 @@ core-js-pure@3.1.2, core-js-pure@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.1.2.tgz#62fc435f35b7374b9b782013cdcb2f97e9f6dffa"
   integrity sha512-5ckIdBF26B3ldK9PM177y2ZcATP2oweam9RskHSoqfZCrJ2As6wVg8zJ1zTriFsZf6clj/N1ThDFRGaomMsh9w==
 
-core-js@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.0.tgz#29ea478601789c72f2978e9bb98f43546f89d3aa"
-  integrity sha512-lQxb4HScV71YugF/X28LtePZj9AB7WqOpcB+YztYxusvhrgZiQXPmCYfPC5LHsw/+ScEtDbXU3xbqH3CjBRmYA==
+core-js@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.1.tgz#76dd6828412900ab27c8ce0b22e6114d7ce21b18"
+  integrity sha512-KX/dnuY/J8FtEwbnrzmAjUYgLqtk+cxM86hfG60LGiW3MmltIc2yAmDgBgEkfm0blZhUrdr1Zd84J2Y14mLxzg==
 
 core-js@^1.0.0:
   version "1.2.7"
@@ -12203,10 +12203,10 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.26.3:
-  version "1.26.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.26.3.tgz#3e71b8120a4ccc745a856e926cab0efbe0eead90"
-  integrity sha512-8MhY/M8gnv3Q/pQQSWYWzbeJ5J1C5anCNY5BK1kV8Yzw9RFS0FF4lbLt+uyPO3wLKWXSXrhAL5pWL85TZAh+Sw==
+rollup@1.26.5:
+  version "1.26.5"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.26.5.tgz#c492c8bb88b661e7952a864e40bdec209aa1aa03"
+  integrity sha512-c6Pv0yWzjYNpy2DIhLFUnyP6e1UTGownr4IfpJcPY/k186RJjpaGGPRwKQ62KCauctG6dgtHt88pw1EGrPRkuA==
   dependencies:
     "@types/estree" "*"
     "@types/node" "*"
@@ -14345,10 +14345,10 @@ vuex-router-sync@5.0.0:
   resolved "https://registry.yarnpkg.com/vuex-router-sync/-/vuex-router-sync-5.0.0.tgz#1a225c17a1dd9e2f74af0a1b2c62072e9492b305"
   integrity sha512-Mry2sO4kiAG64714X1CFpTA/shUH1DmkZ26DFDtwoM/yyx6OtMrc+MxrU+7vvbNLO9LSpgwkiJ8W+rlmRtsM+w==
 
-vuex@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
-  integrity sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
+vuex@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.2.tgz#a2863f4005aa73f2587e55c3fadf3f01f69c7d4d"
+  integrity sha512-ha3jNLJqNhhrAemDXcmMJMKf1Zu4sybMPr9KxJIuOpVcsDQlTBYLLladav2U+g1AvdYDG5Gs0xBTb0M5pXXYFQ==
 
 walkdir@^0.4.0:
   version "0.4.0"
