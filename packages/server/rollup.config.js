@@ -72,7 +72,7 @@ export default {
             baseContents: {
                 private: true,
                 engines: {
-                    node: "8",
+                    node: "10",
                 },
             },
             additionalDependencies: [
