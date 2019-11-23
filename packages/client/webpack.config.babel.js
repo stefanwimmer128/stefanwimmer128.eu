@@ -102,8 +102,6 @@ const config = {
                                     "@babel/env",
                                     {
                                         modules: false,
-                                        useBuiltIns: "entry",
-                                        corejs: 3,
                                     },
                                 ],
                                 "@vue/jsx",
