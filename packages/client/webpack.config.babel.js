@@ -139,9 +139,10 @@ const config = {
                 loader: [
                     ExtractCssChunksWebpackPlugin.loader,
                     sourceMapLoader("css-loader", {
-                        importLoaders: 2,
+                        importLoaders: 3,
                     }),
                     sourceMapLoader("postcss-loader"),
+                    sourceMapLoader("resolve-url-loader"),
                     sourceMapLoader("sass-loader", {
                         outputStyle: "nested",
                     }),
