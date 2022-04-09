@@ -60,7 +60,7 @@
     "graphql-tag": "2.10.1",
     "intersection-observer": "0.7.0",
     "marked": "0.8.0",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "postcss-scrollbar": "0.3.0",
     "regenerator-runtime": "0.13.3",
     "vue": "2.6.11",
